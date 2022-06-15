@@ -1,57 +1,62 @@
-# Get Fit, Don't Quit
+# Fitness Tracker
 
-  ## Description
+## Table of Contents
 
-  This application allows you to track your cardio and resistance workouts. 
+- [Description](#description)
+- [Technology](#Technology)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contribution](#contribution)
+- [Questions](#questions)
 
-  ## Deployed Link
-https://getfitdontquit.herokuapp.com/
-  ![](src/NEEDSSCREENSHOT)
+## Description:
 
-  ## Technologies Used
+This is a MERN-stack application that helps you to track your exercises. It allows users to create an account, add new exercises including cardio and resistance, add goals for exercises, and login to check the workout history.
 
-  * Mongoose
-  * Express.js
-  * React.js
-  * Node.js
-  * Tailwind
+## Technology:
 
-  ## Table of Contents
+Project is created with:
 
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Credits](#credits)
-  * [License](#license)
+- Mongoose
+- Express.js
+- React.js
+- Node.js
 
-  ## Installation
+## Installation
 
-  No installation is required.
+To run this project, install it locally using npm:
 
-  ## Usage
+```
+npm install
+```
 
-  You follow the deployed URL and if you are a first time user you will need to create an account or login if you are already a user. After that you will sign in and choose to track a cardio or resistance workout. After loggin it, it will appear in the history page. There is also a goal page where you can input your own goals.
+## Usage
 
-  ## Contributed By:
+After installing npm packages, the application will be invoked by using the following command:
 
-  * Aaron Beane
-  * Chris Thorne
-  * Kai W.
-  * Lisseth Diaz
-  * Wenwen Tian
+```
+npm run develop
+```
 
-  ## License
+[Click me to see the app!](https:)
 
-  None
-  
+#### Example Screenshot
 
-  ---
+![Screenshot](./assets/images/ET-1.png)
 
-  ## Tests
+## License
 
-  No tests 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <br>
+This project is licensed under MIT, for more information please visit [this website](https://opensource.org/licenses/MIT)
 
-  ## Questions
+## Contribution
 
-  If you have questions:
-  * [Github](https://github.com/lissethdiaz)
-  * [Email](mailto:lissdiaz15@gmail.com) 
+Made by Wenwen Tian
+
+## Questions?
+
+Please feel free to contact me if you need any further information:
+
+- [Email](wwtian9@gmail.com)
+- [Github Profile](https://github.com/joce1ynn)
