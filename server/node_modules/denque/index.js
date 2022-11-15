@@ -5,14 +5,16 @@
  */
 function Denque(array, options) {
   var options = options || {};
+  this._capacity = options.capacity;
 
   this._head = 0;
   this._tail = 0;
-  this._capacity = options.capacity;
-  this._capacityMask = 0x3;
-  this._list = new Array(4);
+
   if (Array.isArray(array)) {
     this._fromArray(array);
+  } else {
+    this._capacityMask = 0x3;
+    this._list = new Array(4);
   }
 }
 
@@ -356,6 +358,7 @@ Denque.prototype.splice = function splice(index, count) {
  * Soft clear - does not reset capacity.
  */
 Denque.prototype.clear = function clear() {
+  this._list = new Array(this._list.length);
   this._head = 0;
   this._tail = 0;
 };
@@ -389,44 +392,67 @@ Denque.prototype.toArray = function toArray() {
  * @private
  */
 Denque.prototype._fromArray = function _fromArray(array) {
-  for (var i = 0; i < array.length; i++) this.push(array[i]);
+  var length = array.length;
+  var capacity = this._nextPowerOf2(length);
+
+  this._list = new Array(capacity);
+  this._capacityMask = capacity - 1;
+  this._tail = length;
+
+  for (var i = 0; i < length; i++) this._list[i] = array[i];
 };
 
 /**
  *
  * @param fullCopy
+ * @param size Initialize the array with a specific size. Will default to the current list size
  * @returns {Array}
  * @private
  */
-Denque.prototype._copyArray = function _copyArray(fullCopy) {
-  var newArray = [];
-  var list = this._list;
-  var len = list.length;
+Denque.prototype._copyArray = function _copyArray(fullCopy, size) {
+  var src = this._list;
+  var capacity = src.length;
+  var length = this.length;
+  size = size | length;
+
+  // No prealloc requested and the buffer is contiguous
+  if (size == length && this._head < this._tail) {
+    // Simply do a fast slice copy
+    return this._list.slice(this._head, this._tail);
+  }
+
+  var dest = new Array(size);
+
+  var k = 0;
   var i;
   if (fullCopy || this._head > this._tail) {
-    for (i = this._head; i < len; i++) newArray.push(list[i]);
-    for (i = 0; i < this._tail; i++) newArray.push(list[i]);
+    for (i = this._head; i < capacity; i++) dest[k++] = src[i];
+    for (i = 0; i < this._tail; i++) dest[k++] = src[i];
   } else {
-    for (i = this._head; i < this._tail; i++) newArray.push(list[i]);
+    for (i = this._head; i < this._tail; i++) dest[k++] = src[i];
   }
-  return newArray;
-};
+
+  return dest;
+}
 
 /**
  * Grows the internal list array.
  * @private
  */
 Denque.prototype._growArray = function _growArray() {
-  if (this._head) {
-    // copy existing data, head to end, then beginning to tail.
-    this._list = this._copyArray(true);
+  if (this._head != 0) {
+    // double array size and copy existing data, head to end, then beginning to tail.
+    var newList = this._copyArray(true, this._list.length << 1);
+
+    this._tail = this._list.length;
     this._head = 0;
+
+    this._list = newList;
+  } else {
+    this._tail = this._list.length;
+    this._list.length <<= 1;
   }
 
-  // head is at 0 and array is now full, safe to extend
-  this._tail = this._list.length;
-
-  this._list.length <<= 1;
   this._capacityMask = (this._capacityMask << 1) | 1;
 };
 
@@ -439,5 +465,17 @@ Denque.prototype._shrinkArray = function _shrinkArray() {
   this._capacityMask >>>= 1;
 };
 
+/**
+ * Find the next power of 2, at least 4
+ * @private
+ * @param {number} num 
+ * @returns {number}
+ */
+Denque.prototype._nextPowerOf2 = function _nextPowerOf2(num) {
+  var log2 = Math.log(num) / Math.log(2);
+  var nextPow2 = 1 << (log2 + 1);
+
+  return Math.max(nextPow2, 4);
+}
 
 module.exports = Denque;
