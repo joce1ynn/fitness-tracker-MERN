@@ -15,7 +15,10 @@ router.route("/").post(createUser).put(authMiddleware);
 // api/users/login
 router.route("/login").post(login);
 
+// api/users/login
+router.route("/logout").post(logout);
+
 // needs to login to add new exercise
-router.route("/me").get(authMiddleware, getSingleUser);
+// router.route("/me").get(authMiddleware, getSingleUser);
 
 module.exports = router;

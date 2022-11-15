@@ -6,7 +6,7 @@ const {
   getCardioById,
   getAllResistance,
   getResistanceById,
-} = require("../../controllers/user-controller");
+} = require("../../controllers/exercise-controller");
 
 // api/users/cardio
 router.route("/cardio").post(createCardio).get(getAllCardio);
