@@ -1,12 +1,15 @@
 const router = require("express").Router();
 const {
-  createCardio,
   createResistance,
-  getAllCardio,
-  getCardioById,
   getAllResistance,
   getResistanceById,
-} = require("../../controllers/exercise-controller");
+} = require("../../controllers/resistance-controller");
+
+const {
+  createCardio,
+  getAllCardio,
+  getCardioById,
+} = require("../../controllers/cardio-controller");
 
 // api/users/cardio
 router.route("/cardio").post(createCardio).get(getAllCardio);
