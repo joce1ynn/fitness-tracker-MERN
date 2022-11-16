@@ -19,10 +19,6 @@ const UserSchema = new Schema({
     unique: true,
     match: [/.+@.+\..+/],
   },
-  userCreated: {
-    type: Date,
-    default: Date.now,
-  },
 });
 
 // hash user password
