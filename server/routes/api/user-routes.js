@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const {
   createUser,
-  getSingleUser,
   login,
 } = require("../../controllers/user-controller");
 
@@ -12,12 +11,7 @@ const { authMiddleware } = require("../../utils/auth");
 // api/user
 router.route("/").post(createUser).put(authMiddleware);
 
-// api/users/login
+// api/user/login
 router.route("/login").post(login);
-
-
-// api/users/me
-// needs to login to add new exercise
-router.route("/me").get(authMiddleware, getSingleUser);
 
 module.exports = router;
