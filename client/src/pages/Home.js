@@ -1,7 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 
-
 export default function Home() {
   return (
     <Container>
@@ -11,6 +10,7 @@ export default function Home() {
         with us.
       </p>
       <button>Get Started</button>
+      <button>Add Exercise</button>
     </Container>
   );
 }

@@ -4,14 +4,8 @@ import Navbar from "react-bootstrap/Navbar";
 
 export default function Header(props) {
   return (
-    <Navbar
-      collapseOnSelect
-      className="navbar"
-      variant="dark"
-      expand="sm"
-      aria-current="true"
-    >
-      <Navbar.Brand>Fitness Tracker</Navbar.Brand>
+    <Navbar collapseOnSelect className="navbar" expand="sm" aria-current="true">
+      <Navbar.Brand href="/">Fitness Tracker</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse
         id="responsive-navbar-nav"

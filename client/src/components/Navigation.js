@@ -7,7 +7,7 @@ export default function Navigation(props) {
   return (
     <Nav>
       <Nav.Link
-        href="/exercise"
+        href="#exercise"
         onClick={() => {
           setCurrentPage("Exercise");
         }}
@@ -15,7 +15,7 @@ export default function Navigation(props) {
         Exercise
       </Nav.Link>
       <Nav.Link
-        href="/history"
+        href="#history"
         onClick={() => {
           setCurrentPage("History");
         }}
@@ -23,7 +23,7 @@ export default function Navigation(props) {
         History
       </Nav.Link>
       <Nav.Link
-        href="/"
+        href="#logout"
         onClick={() => {
           setCurrentPage("Login");
         }}
