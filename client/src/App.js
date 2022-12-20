@@ -1,33 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./pages/Home";
 import History from "./pages/History";
 import Exercise from "./pages/Exercise";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Error from "./pages/Error";
 import Header from "./components/Header";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState("Home");
-
-  const RenderPage = () => {
-    switch (currentPage) {
-      case "Home":
-      default:
-        return <Home />;
-      case "Exercise":
-        return <Exercise />;
-      case "History":
-        return <History />;
-      case "Login":
-        return <Login />;
-    }
-  };
   return (
-    <div>
-      <Header setCurrentPage={setCurrentPage} />
-      <RenderPage />
-    </div>
+    <Router>
+      <Header />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/exercise" element={<Exercise />} />
+          <Route element={<Error />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

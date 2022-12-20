@@ -1,17 +1,29 @@
 import React from "react";
-import Navigation from "./Navigation";
-import Navbar from "react-bootstrap/Navbar";
+import { Navbar, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export default function Header(props) {
+export default function Header() {
   return (
-    <Navbar collapseOnSelect className="navbar" expand="sm" aria-current="true">
-      <Navbar.Brand href="/">Fitness Tracker</Navbar.Brand>
+    <Navbar collapseOnSelect expand="sm">
+      <Navbar.Brand as={Link} to="/">
+        Fitness Tracker
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse
         id="responsive-navbar-nav"
         className=" justify-content-end"
       >
-        <Navigation setCurrentPage={props.setCurrentPage}></Navigation>
+        <Nav>
+          <Nav.Link as={Link} to="/history" eventKey="1">
+            History
+          </Nav.Link>
+          <Nav.Link as={Link} to="/exercise" eventKey="2">
+            Exercise
+          </Nav.Link>
+          <Nav.Link as={Link} to="/" eventKey="3">
+            Logout
+          </Nav.Link>
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
