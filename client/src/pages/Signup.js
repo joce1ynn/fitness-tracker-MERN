@@ -66,7 +66,8 @@ export default function Signup() {
 
           {/* --------------------login link-------------------- */}
           <p>
-            Already have an account?<button>Log in.</button>
+            Already have an account?
+            <button>Log in.</button>
           </p>
         </form>
       </div>
