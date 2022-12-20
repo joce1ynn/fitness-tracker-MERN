@@ -4,25 +4,25 @@ const {
   getAllResistance,
   getResistanceById,
   deleteResistance,
-} = require("../../controllers/resistance-controller");
+} = require("../controllers/resistance-controller");
 
 const {
   createCardio,
   getAllCardio,
   getCardioById,
   deleteCardio,
-} = require("../../controllers/cardio-controller");
+} = require("../controllers/cardio-controller");
 
-// api/exercise/cardio
+// /exercise/cardio
 router.route("/cardio").post(createCardio).get(getAllCardio);
 
-// api/exercise/cardio/:id
+// /exercise/cardio/:id
 router.route("/cardio/:id").get(getCardioById).delete(deleteCardio);
 
-// api/exercise/resistance
+// /exercise/resistance
 router.route("/resistance").post(createResistance).get(getAllResistance);
 
-// api/exercise/resistance/:id
+// /exercise/resistance/:id
 router.route("/resistance/:id").get(getResistanceById).delete(deleteResistance);
 
 module.exports = router;

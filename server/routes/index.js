@@ -1,8 +1,11 @@
 const router = require("express").Router();
 const path = require("path");
-const apiRoutes = require("./api");
 
-router.use("/api", apiRoutes);
+const userRoutes = require("./user-routes");
+const exerciseRoutes = require("./exercise-routes");
+
+router.use("/user", userRoutes);
+router.use("/exercise", exerciseRoutes);
 
 // connect with react router
 // serve up react front-end in production
