@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/fitness-tracker#readme",
   "devDependencies": {
-    "concurrently": "^7.2.1"
+    "concurrently": "^7.6.0"
   }
 }

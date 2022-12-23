@@ -84,12 +84,12 @@ export default function Signup() {
           />
 
           {/* --------------------sign up btn-------------------- */}
-          <button className="btn">Create your account</button>
+          <button>Create your account</button>
 
           {/* --------------------login link-------------------- */}
           <p>
             Already have an account?
-            <button>Log in.</button>
+            <button className="btn">Log in.</button>
           </p>
         </form>
         {showAlert && <div>Signup failed</div>}
