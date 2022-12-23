@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { createUser } from "../utils/API";
+
 export default function Signup() {
   // set up the orginal state of the form
   const [formState, setFormState] = useState({
@@ -7,6 +9,9 @@ export default function Signup() {
     email: "",
     password: "",
   });
+
+  // set state for alert
+  const [showAlert, setShowAlert] = useState(false);
 
   // update state based on form input
   const handleChange = (event) => {
@@ -21,6 +26,23 @@ export default function Signup() {
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    // use try/catch to handle errors
+    try {
+      // create new users
+      const response = await createUser(formState);
+
+      // check the response
+      if (!response.ok) {
+        throw new Error("something went wrong!");
+      }
+
+      const { user } = await response.json();
+      console.log(user);
+    } catch (err) {
+      console.error(err);
+      setShowAlert(true);
+    }
   };
 
   return (
@@ -70,6 +92,7 @@ export default function Signup() {
             <button>Log in.</button>
           </p>
         </form>
+        {showAlert && <div>Signup failed</div>}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ const { createUser, login } = require("../controllers/user-controller");
 const { authMiddleware } = require("../utils/auth");
 
 // put authMiddleware anywhere we need to send a token for verification of user
-// /user  for user signup
+// /user for user signup
 router.route("/").post(createUser).put(authMiddleware);
 
 // /user/login for user login

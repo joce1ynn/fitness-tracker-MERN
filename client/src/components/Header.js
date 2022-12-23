@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
+// cant use <a> in react, instead, use <link> from react router dom
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -14,6 +15,7 @@ export default function Header() {
         className=" justify-content-end"
       >
         <Nav>
+          {/* use eventKey to show navbar style from react bootstrap */}
           <Nav.Link as={Link} to="/history" eventKey="1">
             History
           </Nav.Link>
