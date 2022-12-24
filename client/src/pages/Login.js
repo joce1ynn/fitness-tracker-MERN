@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { loginUser } from "../utils/API";
+import Auth from "../utils/auth";
 
 export default function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -27,7 +28,9 @@ export default function Login() {
         throw new Error("something went wrong");
       }
 
-      const { user } = await response.json();
+      // use authentication function
+      const { token, user } = await response.json();
+      Auth.login(token);
       console.log(user);
     } catch (err) {
       console.error(err);
@@ -69,7 +72,7 @@ export default function Login() {
           />
 
           {/* --------------------login btn-------------------- */}
-          <button>Login</button>
+          <button disabled={!(formState.email && formState.password)}>Login</button>
 
           {/* --------------------signup link-------------------- */}
           <p>

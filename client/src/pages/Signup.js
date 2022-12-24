@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
 import { createUser } from "../utils/API";
+import Auth from "../utils/auth";
 
 export default function Signup() {
   // set up the orginal state of the form
@@ -37,7 +37,11 @@ export default function Signup() {
         throw new Error("something went wrong!");
       }
 
-      const { user } = await response.json();
+      // get token and user data from server
+      const { token, user } = await response.json();
+      // use authenticaiton functionality
+      Auth.login(token);
+
       console.log(user);
     } catch (err) {
       console.error(err);
@@ -84,12 +88,18 @@ export default function Signup() {
           />
 
           {/* --------------------sign up btn-------------------- */}
-          <button>Create your account</button>
+          <button disabled={
+            !(
+              formState.username &&
+              formState.email &&
+              formState.password
+            )
+          }>Create your account</button>
 
           {/* --------------------login link-------------------- */}
           <p>
             Already have an account?
-            <button className="btn">Log in.</button>
+            <button >Log in.</button>
           </p>
         </form>
         {showAlert && <div>Signup failed</div>}

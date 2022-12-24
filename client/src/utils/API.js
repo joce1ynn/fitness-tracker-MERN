@@ -1,3 +1,5 @@
+// import { authHeader } from "./auth-header";
+
 export const createUser = (userData) => {
   return fetch("/api/user", {
     method: "POST",
