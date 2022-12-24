@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { createUser } from "../utils/API";
 import Auth from "../utils/auth";
 
@@ -98,8 +100,8 @@ export default function Signup() {
 
           {/* --------------------login link-------------------- */}
           <p>
-            Already have an account?
-            <button >Log in.</button>
+            Already have an account?{' '}
+            <Link to="/login">Log in</Link>
           </p>
         </form>
         {showAlert && <div>Signup failed</div>}
