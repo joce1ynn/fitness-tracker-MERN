@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon"
+    "watch": "nodemon server.js --ignore '../client/'"
   },
   "keywords": [],
   "author": "",
@@ -15,9 +15,9 @@
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
-    "mongoose": "^6.2.9"
+    "mongoose": "^6.8.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.20"
   }
 }
