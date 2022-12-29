@@ -15,41 +15,38 @@ export default function Exercise() {
     sets: "",
     reps: ""
   })
-  const [formValid, setFormValid] = useState(false)
 
-  const validateForm = () => {
-    if (exerciseType === "cardio") {
-      (cardioForm.name && cardioForm.distance && cardioForm.duration) ?
-        setFormValid(true) : setFormValid(false)
+  const validateForm = (form, type) => {
+    if (type === "cardio") {
+      return form.name && form.distance && form.duration;
+    } else if (type === "resistance") {
+      return form.name && form.weight && form.sets && form.reps;
     }
-
-    else if (exerciseType === "resistance") {
-      (resistanceForm.name && resistanceForm.weight && resistanceForm.sets && resistanceForm.reps) ?
-        setFormValid(true) : setFormValid(false)
-    }
+    return false;
   }
 
   const handleTypeChange = (event) => {
-    setExerciseType(event.target.value)
+    setExerciseType(event.target.value);
   }
 
   const handleCardioChange = (event) => {
     const { name, value } = event.target;
     setCardioForm({ ...cardioForm, [name]: value })
-    validateForm();
   }
 
   const handleResistanceChange = (event) => {
     const { name, value } = event.target;
     setResistanceForm({ ...resistanceForm, [name]: value })
-    validateForm();
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // if (formValid) {
-    //   // Submit the form
-    // }
+
+    if (validateForm(cardioForm, exerciseType)) {
+      console.log("cardio form is valid");
+    } else if (validateForm(resistanceForm, exerciseType)) {
+      console.log("resistance form is valid");
+    }
 
     setCardioForm({
       name: "",
@@ -82,7 +79,8 @@ export default function Exercise() {
           <Cardio cardioForm={cardioForm} handleCardioChange={handleCardioChange} />}
         {exerciseType === 'resistance' &&
           <Resistance resistanceForm={resistanceForm} handleResistanceChange={handleResistanceChange} />}
-        <input type="submit" value="Add" disabled={!formValid} />
+        <input type="submit" value="Add"
+          disabled={!validateForm(cardioForm, exerciseType) && !validateForm(resistanceForm, exerciseType)} />
       </form>
     </div>
   );
