@@ -1,42 +1,91 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Cardio from '../components/Cardio';
 import Resistance from '../components/Resistance';
 
-export default class Exercise extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: 'default' };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+export default function Exercise() {
+  const [exerciseType, setExerciseType] = useState("default")
+  const [cardioForm, setCardioForm] = useState({
+    name: "",
+    distance: "",
+    duration: ""
+  })
+  const [resistanceForm, setResistanceForm] = useState({
+    name: "",
+    weight: "",
+    sets: "",
+    reps: ""
+  })
+  const [formValid, setFormValid] = useState(false)
+
+  const validateForm = () => {
+    if (exerciseType === "cardio") {
+      (cardioForm.name && cardioForm.distance && cardioForm.duration) ?
+        setFormValid(true) : setFormValid(false)
+    }
+
+    else if (exerciseType === "resistance") {
+      (resistanceForm.name && resistanceForm.weight && resistanceForm.sets && resistanceForm.reps) ?
+        setFormValid(true) : setFormValid(false)
+    }
   }
 
-  handleChange = (event) => {
-    this.setState({ value: event.target.value });
+  const handleTypeChange = (event) => {
+    setExerciseType(event.target.value)
   }
 
-  handleSubmit(event) {
+  const handleCardioChange = (event) => {
+    const { name, value } = event.target;
+    setCardioForm({ ...cardioForm, [name]: value })
+    validateForm();
+  }
+
+  const handleResistanceChange = (event) => {
+    const { name, value } = event.target;
+    setResistanceForm({ ...resistanceForm, [name]: value })
+    validateForm();
+  }
+
+  const handleSubmit = (event) => {
     event.preventDefault();
+    // if (formValid) {
+    //   // Submit the form
+    // }
+
+    setCardioForm({
+      name: "",
+      distance: "",
+      duration: ""
+    });
+
+    setResistanceForm({
+      name: "",
+      weight: "",
+      sets: "",
+      reps: ""
+    });
   }
 
-  render() {
-    return (
-      <div>
-        <h2>Add Exercise</h2>
-        <form onSubmit={this.handleSubmit}>
-          <div className='type'>
-            <label>Type:</label>
-            <select value={this.state.value} onChange={this.handleChange}>
-              <option disabled value="default">Select Exercise Type</option>
-              <option value="cardio" >Cardio</option>
-              <option value="resistance" >Resistance</option>
-            </select>
-          </div>
-          {/* Render the component based on the selected option */}
-          {this.state.value === 'cardio' && <Cardio />}
-          {this.state.value === 'resistance' && <Resistance />}
-          <input type="submit" value="Add" />
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h2>Add Exercise</h2>
+      <form onSubmit={handleSubmit}>
+        <div className='type'>
+          <label>Type:</label>
+          <select value={exerciseType} onChange={handleTypeChange}>
+            <option disabled value="default">Select Exercise Type</option>
+            <option value="cardio" >Cardio</option>
+            <option value="resistance" >Resistance</option>
+          </select>
+        </div>
+        {/* Render the component based on the selected option */}
+        {exerciseType === 'cardio' &&
+          <Cardio cardioForm={cardioForm} handleCardioChange={handleCardioChange} />}
+        {exerciseType === 'resistance' &&
+          <Resistance resistanceForm={resistanceForm} handleResistanceChange={handleResistanceChange} />}
+        <input type="submit" value="Add" disabled={!formValid} />
+      </form>
+    </div>
+  );
 }
+
+
