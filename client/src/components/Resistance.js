@@ -4,7 +4,13 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function Resistance(props) {
     const { resistanceForm, handleResistanceChange } = props;
-    const [startDate, setStartDate] = useState(new Date())
+    const [startDate, setStartDate] = useState(new Date());
+    const handleDateChange = date => {
+        setStartDate(date);
+        handleResistanceChange({
+            target: { name: "date", value: date }
+        })
+    }
 
     return (
         <div className='resistance-form'>
@@ -30,7 +36,9 @@ export default function Resistance(props) {
             </div>
             <div className="date">
                 <label>Date:</label>
-                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                <DatePicker selected={startDate}
+                    value={resistanceForm.date}
+                    onChange={handleDateChange} />
             </div>
         </div>
     )

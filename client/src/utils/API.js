@@ -26,7 +26,7 @@ export const createCardio = (cardioData, token) => {
 }
 
 export const createResistance = (resistanceData, token) => {
-  return fetch("/api/exercise/cardio", {
+  return fetch("/api/exercise/resistance", {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',

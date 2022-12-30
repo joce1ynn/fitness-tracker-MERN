@@ -8,7 +8,6 @@ import { createCardio, createResistance } from '../utils/API';
 export default function Exercise() {
   const [exerciseType, setExerciseType] = useState("default")
   const [cardioForm, setCardioForm] = useState({
-    type: "Cardio",
     name: "",
     distance: "",
     duration: "",
@@ -18,7 +17,8 @@ export default function Exercise() {
     name: "",
     weight: "",
     sets: "",
-    reps: ""
+    reps: "",
+    date: ""
   })
 
   const loggedIn = Auth.loggedIn();
@@ -52,22 +52,41 @@ export default function Exercise() {
 
     //get token
     const token = loggedIn ? Auth.getToken() : null;
-
     if (!token) return false;
 
-    try {
-      const response = await createCardio(cardioForm, token);
+    // cardio submit
+    if (validateForm(cardioForm, exerciseType)) {
+      try {
+        const response = await createCardio(cardioForm, token);
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
+        if (!response.ok) {
+          throw new Error('something went wrong!');
+        }
+
+        const cardioData = await response.json()
+        console.log(cardioData)
+      } catch (err) {
+        console.error(err)
       }
-
-      const cardioData = await response.json()
-      console.log(cardioData)
-    } catch (err) {
-      console.error(err)
     }
 
+    // resistance submit
+    else if (validateForm(resistanceForm, exerciseType)) {
+      try {
+        const response = await createResistance(resistanceForm, token);
+
+        if (!response.ok) {
+          throw new Error('something went wrong!');
+        }
+
+        const resistanceData = await response.json()
+        console.log(resistanceData)
+      } catch (err) {
+        console.error(err)
+      }
+    }
+
+    // clear form input
     setCardioForm({
       name: "",
       distance: "",
@@ -75,14 +94,12 @@ export default function Exercise() {
       date: ""
 
     });
-
     setResistanceForm({
       name: "",
       weight: "",
       sets: "",
       reps: "",
       date: ""
-
     });
   }
 
