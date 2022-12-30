@@ -1,5 +1,3 @@
-// import { authHeader } from "./auth-header";
-
 export const createUser = (userData) => {
   return fetch("/api/user", {
     method: "POST",
@@ -15,3 +13,25 @@ export const loginUser = (userData) => {
     body: JSON.stringify(userData),
   });
 };
+
+export const createCardio = (cardioData, token) => {
+  return fetch("/api/exercise/cardio", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(cardioData)
+  })
+}
+
+export const createResistance = (resistanceData, token) => {
+  return fetch("/api/exercise/cardio", {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(resistanceData)
+  })
+}

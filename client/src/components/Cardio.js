@@ -4,7 +4,13 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function Cardio(props) {
     const { cardioForm, handleCardioChange } = props;
-    const [startDate, setStartDate] = useState(new Date())
+    const [startDate, setStartDate] = useState(new Date());
+    const handleDateChange = date => {
+        setStartDate(date);
+        handleCardioChange({
+            target: { name: "date", value: date }
+        })
+    }
 
     return (
         <div className='cardio-form'>
@@ -25,7 +31,9 @@ export default function Cardio(props) {
             </div>
             <div className="date">
                 <label >Date:</label>
-                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}
+                <DatePicker selected={startDate}
+                    value={cardioForm.date}
+                    onChange={handleDateChange}
                 />
             </div>
         </div>

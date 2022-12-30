@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
+import { Navigate } from 'react-router-dom';
 import Cardio from '../components/Cardio';
 import Resistance from '../components/Resistance';
+import Auth from "../utils/auth";
+import { createCardio, createResistance } from '../utils/API';
 
 export default function Exercise() {
   const [exerciseType, setExerciseType] = useState("default")
   const [cardioForm, setCardioForm] = useState({
+    type: "Cardio",
     name: "",
     distance: "",
-    duration: ""
+    duration: "",
+    date: ""
   })
   const [resistanceForm, setResistanceForm] = useState({
     name: "",
@@ -16,11 +21,13 @@ export default function Exercise() {
     reps: ""
   })
 
+  const loggedIn = Auth.loggedIn();
+
   const validateForm = (form, type) => {
     if (type === "cardio") {
-      return form.name && form.distance && form.duration;
+      return form.name && form.distance && form.duration && form.date;
     } else if (type === "resistance") {
-      return form.name && form.weight && form.sets && form.reps;
+      return form.name && form.weight && form.sets && form.reps && form.date;
     }
     return false;
   }
@@ -37,29 +44,51 @@ export default function Exercise() {
   const handleResistanceChange = (event) => {
     const { name, value } = event.target;
     setResistanceForm({ ...resistanceForm, [name]: value })
+
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (validateForm(cardioForm, exerciseType)) {
-      console.log("cardio form is valid");
-    } else if (validateForm(resistanceForm, exerciseType)) {
-      console.log("resistance form is valid");
+    //get token
+    const token = loggedIn ? Auth.getToken() : null;
+
+    if (!token) return false;
+
+    try {
+      const response = await createCardio(cardioForm, token);
+
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
+
+      const cardioData = await response.json()
+      console.log(cardioData)
+    } catch (err) {
+      console.error(err)
     }
 
     setCardioForm({
       name: "",
       distance: "",
-      duration: ""
+      duration: "",
+      date: ""
+
     });
 
     setResistanceForm({
       name: "",
       weight: "",
       sets: "",
-      reps: ""
+      reps: "",
+      date: ""
+
     });
+  }
+
+  // If the user is not logged in, redirect to the login page
+  if (!loggedIn) {
+    return <Navigate to="/login" />;
   }
 
   return (
