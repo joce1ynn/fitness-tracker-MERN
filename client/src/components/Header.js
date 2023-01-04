@@ -26,11 +26,11 @@ export default function Header() {
           {Auth.loggedIn() ? (
             <>
               {/* use eventKey to show navbar style from react bootstrap */}
-              < Nav.Link as={Link} to="/history" eventKey="1">
-                History
-              </Nav.Link>
-              <Nav.Link as={Link} to="/exercise" eventKey="2">
+              <Nav.Link as={Link} to="/exercise" eventKey="1">
                 Exercise
+              </Nav.Link>
+              < Nav.Link as={Link} to="/history" eventKey="2">
+                History
               </Nav.Link>
               <Nav.Link as={Link} to="/" eventKey="3" onClick={logout}>
                 Logout

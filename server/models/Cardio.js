@@ -5,6 +5,7 @@ const CardioSchema = new Schema(
     name: {
       type: String,
       required: true,
+      maxlength: 30
     },
     distance: {
       type: Number,
@@ -17,10 +18,12 @@ const CardioSchema = new Schema(
     date: {
       type: Date,
       required: true,
+    }, 
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
     },
-  },
-  {
-    timestamps: true,
   }
 );
 

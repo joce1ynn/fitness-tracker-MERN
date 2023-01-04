@@ -19,6 +19,14 @@ const UserSchema = new Schema({
     unique: true,
     match: [/.+@.+\..+/],
   },
+  cardio: [{
+    type: Schema.Types.ObjectId,
+    ref: "Cardio"
+  }],
+  resistance: [{
+    type: Schema.Types.ObjectId,
+    ref: "Resistance"
+  }]
 });
 
 // hash user password

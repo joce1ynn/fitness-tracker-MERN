@@ -5,6 +5,7 @@ const ResistanceSchema = new Schema(
     name: {
       type: String,
       required: true,
+      maxlength: 30
     },
     weight: {
       type: Number,
@@ -22,9 +23,11 @@ const ResistanceSchema = new Schema(
       type: Date,
       required: true,
     },
-  },
-  {
-    timestamps: true,
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   }
 );
 
