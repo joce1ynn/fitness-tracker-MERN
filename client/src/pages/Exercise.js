@@ -11,8 +11,7 @@ export default function Exercise() {
     name: "",
     distance: "",
     duration: "",
-    date: "",
-    userId: ""
+    date: ""
   })
   const [resistanceForm, setResistanceForm] = useState({
     name: "",
