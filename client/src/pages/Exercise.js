@@ -11,7 +11,8 @@ export default function Exercise() {
     name: "",
     distance: "",
     duration: "",
-    date: ""
+    date: "",
+    userId: ""
   })
   const [resistanceForm, setResistanceForm] = useState({
     name: "",
@@ -54,9 +55,15 @@ export default function Exercise() {
     const token = loggedIn ? Auth.getToken() : null;
     if (!token) return false;
 
+    // get user id 
+    const userId = Auth.getUserId();
+
     // cardio submit
     if (validateForm(cardioForm, exerciseType)) {
       try {
+        // add userid to cardio form
+        cardioForm.userId = userId;
+
         const response = await createCardio(cardioForm, token);
 
         if (!response.ok) {
@@ -73,6 +80,9 @@ export default function Exercise() {
     // resistance submit
     else if (validateForm(resistanceForm, exerciseType)) {
       try {
+        // add userid to resistance form
+        resistanceForm.userId = userId;
+
         const response = await createResistance(resistanceForm, token);
 
         if (!response.ok) {
@@ -92,7 +102,6 @@ export default function Exercise() {
       distance: "",
       duration: "",
       date: ""
-
     });
     setResistanceForm({
       name: "",
