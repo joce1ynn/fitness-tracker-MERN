@@ -25,10 +25,7 @@ module.exports = {
     Cardio.find({})
       .sort({ date: "desc" })
       .then((dbCardioData) => res.json(dbCardioData))
-      .catch((err) => {
-        console.log(err);
-        res.sendStatus(400);
-      });
+      .catch((err) => res.status(500).json(err));
   },
 
   // get one Cardio by id
@@ -40,10 +37,7 @@ module.exports = {
         }
         res.json(dbCardioData);
       })
-      .catch((err) => {
-        console.log(err);
-        res.sendStatus(400);
-      });
+      .catch((err) => res.status(500).json(err));
   },
 
   // delete cardio data
