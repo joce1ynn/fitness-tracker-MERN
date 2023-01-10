@@ -31,10 +31,22 @@ export default function History() {
           const cardio = user.cardio;
           const resistance = user.resistance;
           const exercise = cardio.concat(resistance);
+
           // sort exercise data by date
           exercise.sort((a, b) => {
             return new Date(b.date) - new Date(a.date)
           })
+
+          //format date in exercise data
+          exercise.forEach(item => {
+            const date = new Date(item.date);
+            const options = {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit"
+            }
+            item.date = date.toLocaleDateString("en-US", options)
+          });
 
           setUserData(user);
           setExerciseData(exercise)
@@ -45,22 +57,32 @@ export default function History() {
   }, [loggedIn, userData])
 
 
-
   // If the user is not logged in, redirect to the login page
   if (!loggedIn) {
     return <Navigate to="/login" />;
   }
 
+  let currentDate;
   return (
     <div>
       <h2>History</h2>
+      <h3>
+        {exerciseData.length ? null : "No exercise data yet!"}
+      </h3>
       <div>
-        {exerciseData.length ? "yes data" : "No exercise data yet!"}
-        <div className='date'>
-          date
-        </div>
-        <div className='exercise'>Exercise data</div>
-        <button>Show More</button>
+        {exerciseData.map((exercise) => {
+          let dateToDisplay;
+          if (exercise.date !== currentDate) {
+            currentDate = exercise.date;
+            dateToDisplay = exercise.date;
+          }
+          return (
+            <div className='exercise-div' key={exercise._id}>
+              <div className='date'>{dateToDisplay}</div>
+              <div className='exercise'>{exercise.name}</div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )
