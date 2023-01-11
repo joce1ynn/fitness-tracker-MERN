@@ -2,6 +2,11 @@ const { Schema, model } = require("mongoose");
 
 const ResistanceSchema = new Schema(
   {
+    type: {
+      type: String,
+      default: "resistance",
+      required: true
+    },
     name: {
       type: String,
       required: true,

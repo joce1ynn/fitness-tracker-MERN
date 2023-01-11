@@ -3,6 +3,7 @@ import { Navigate, Link } from 'react-router-dom';
 
 import { getMe } from '../utils/API';
 import Auth from "../utils/auth"
+import { formatDate } from '../utils/dateFormat';
 
 export default function History() {
   const [userData, setUserData] = useState({});
@@ -39,13 +40,7 @@ export default function History() {
 
           //format date in exercise data
           exercise.forEach(item => {
-            const date = new Date(item.date);
-            const options = {
-              year: "numeric",
-              month: "2-digit",
-              day: "2-digit"
-            }
-            item.date = date.toLocaleDateString("en-US", options)
+            item.date = formatDate(item.date)
           });
 
           setUserData(user);
@@ -78,7 +73,7 @@ export default function History() {
           return (
             <div className='exercise-div' key={exercise._id}>
               <div className='date'>{dateToDisplay}</div>
-              <Link to={`/exercise/${exercise._id}`} className='exercise'>
+              <Link to={`/exercise/${exercise.type}/${exercise._id}`} className='exercise'>
                 <p>{exercise.name}</p>
               </Link>
             </div>

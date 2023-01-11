@@ -2,6 +2,11 @@ const { Schema, model } = require("mongoose");
 
 const CardioSchema = new Schema(
   {
+    type: {
+      type: String,
+      default: "cardio",
+      required: true
+    },
     name: {
       type: String,
       required: true,
@@ -18,7 +23,7 @@ const CardioSchema = new Schema(
     date: {
       type: Date,
       required: true,
-    }, 
+    },
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'User',

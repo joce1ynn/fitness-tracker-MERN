@@ -3,41 +3,49 @@ import { useParams, Navigate } from 'react-router-dom';
 
 import Auth from '../utils/auth';
 import { getCardioById, getResistanceById } from '../utils/API';
+import { formatDate } from '../utils/dateFormat';
 
 export default function SingleExercise() {
-    const { id } = useParams();
+    const { id, type } = useParams();
     const [cardioData, setCardioData] = useState({})
     const [resistanceData, setResistanceData] = useState({})
-
 
     const loggedIn = Auth.loggedIn();
 
     useEffect(() => {
-        const displayExercise = async (exerciseId) => {
-            const token = loggedIn ? Auth.getToken() : null;
-            if (!token) return false;
+        // fetch cardio data by id
+        if (type === "cardio") {
+            const displayCardio = async (cardioId) => {
+                const token = loggedIn ? Auth.getToken() : null;
+                if (!token) return false;
 
-            try {
-                const response = await getCardioById(exerciseId, token);
+                try {
+                    const response = await getCardioById(cardioId, token);
+                    const cardio = await response.json()
+                    cardio.date = formatDate(cardio.date)
+                    setCardioData(cardio)
+                } catch (err) { console.error(err) }
 
-                const cardio = await response.json()
-                setCardioData(cardio)
-            } catch (err) {
-                console.error(err);
-                // get resistance data instead
-                if (err.response && err.response.status === 404) {
-                    try {
-                        const response = await getResistanceById(exerciseId, token);
-
-                        const resistance = await response.json()
-
-                        setResistanceData(resistance)
-                    } catch (err) { console.error(err) }
-                }
             }
+            displayCardio(id);
         }
-        displayExercise(id);
-    }, [id, loggedIn])
+
+        // fetch resistance data by id
+        else if (type === "resistance") {
+            const displayResistance = async (resistanceId) => {
+                const token = loggedIn ? Auth.getToken() : null;
+                if (!token) return false;
+
+                try {
+                    const response = await getResistanceById(resistanceId, token);
+                    const resistance = await response.json()
+                    resistance.date = formatDate(resistance.date)
+                    setResistanceData(resistance)
+                } catch (err) { console.error(err) }
+            }
+            displayResistance(id);
+        }
+    }, [id, type, loggedIn])
 
     if (!loggedIn) {
         return <Navigate to="/login" />;
@@ -45,21 +53,21 @@ export default function SingleExercise() {
 
     return (
         <div>
-            {cardioData && (<div className='cardio-div'>
-                <p>Date:{cardioData.date}</p>
-                <p>Type:Cardio</p>
-                <p>Name:{cardioData.name}</p>
-                <p>Distance:{cardioData.distance}</p>
-                <p>Duration:{cardioData.duration}</p>
+            {type === "cardio" && (<div className='cardio-div'>
+                <p>Date: {cardioData.date}</p>
+                <p>Type: Cardio</p>
+                <p>Name: {cardioData.name}</p>
+                <p>Distance: {cardioData.distance}</p>
+                <p>Duration: {cardioData.duration}</p>
                 <button>Delete</button>
             </div>)}
-            {resistanceData && (<div className='resistance-div'>
-                <p>Date:{resistanceData.date}</p>
-                <p>Type:Resistance</p>
-                <p>Name:{resistanceData.name}</p>
-                <p>Weight:{resistanceData.weight}</p>
-                <p>Sets:{resistanceData.sets}</p>
-                <p>Reps:{resistanceData.reps}</p>
+            {type === "resistance" && (<div className='resistance-div'>
+                <p>Date: {resistanceData.date}</p>
+                <p>Type: Resistance</p>
+                <p>Name: {resistanceData.name}</p>
+                <p>Weight: {resistanceData.weight}</p>
+                <p>Sets: {resistanceData.sets}</p>
+                <p>Reps: {resistanceData.reps}</p>
                 <button>Delete</button>
             </div>)}
         </div>

@@ -23,7 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/history" element={<History />} />
-          <Route path="/exercise/:id" element={<SingleExercise />} />
+          <Route path="/exercise/:type/:id" element={<SingleExercise />} />
           <Route path="/exercise" element={<Exercise />} />
           <Route path="*" element={<Error />} />
         </Routes>
