@@ -60,9 +60,12 @@ export default function History() {
   return (
     <div>
       <h2>History</h2>
-      <h3>
-        {exerciseData.length ? null : "No exercise data yet!"}
-      </h3>
+      {exerciseData.length ? null :
+        (<div>
+          <h3>No exercise data yet!</h3>
+          <Link to="/exercise"><button>Add Exercise</button></Link>
+        </div>
+        )}
       <div>
         {exerciseData.map((exercise) => {
           let dateToDisplay;
@@ -80,6 +83,6 @@ export default function History() {
           )
         })}
       </div>
-    </div>
+    </div >
   )
 }

@@ -20,6 +20,7 @@ export default function Exercise() {
     reps: "",
     date: ""
   })
+  const [message, setMessage] = useState("")
 
   const loggedIn = Auth.loggedIn();
 
@@ -34,6 +35,7 @@ export default function Exercise() {
 
   const handleTypeChange = (event) => {
     setExerciseType(event.target.value);
+    setMessage("")
   }
 
   const handleCardioChange = (event) => {
@@ -69,8 +71,7 @@ export default function Exercise() {
           throw new Error('something went wrong!');
         }
 
-        const cardioData = await response.json()
-        console.log(cardioData)
+        setMessage("Cardio successfully created!")
       } catch (err) {
         console.error(err)
       }
@@ -88,8 +89,8 @@ export default function Exercise() {
           throw new Error('something went wrong!');
         }
 
-        const resistanceData = await response.json()
-        console.log(resistanceData)
+        setMessage("Resistance successfully created!")
+
       } catch (err) {
         console.error(err)
       }
@@ -135,7 +136,9 @@ export default function Exercise() {
           <Resistance resistanceForm={resistanceForm} handleResistanceChange={handleResistanceChange} />}
         <input type="submit" value="Add"
           disabled={!validateForm(cardioForm, exerciseType) && !validateForm(resistanceForm, exerciseType)} />
+        <p>{message}</p>
       </form>
+
     </div>
   );
 }

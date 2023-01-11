@@ -20,14 +20,6 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // get all Cardios
-  getAllCardio(req, res) {
-    Cardio.find({})
-      .sort({ date: "desc" })
-      .then((dbCardioData) => res.json(dbCardioData))
-      .catch((err) => res.status(500).json(err));
-  },
-
   // get one Cardio by id
   getCardioById({ params }, res) {
     Cardio.findOne({ _id: params.id })

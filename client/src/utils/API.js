@@ -63,3 +63,21 @@ export const getResistanceById = (resistanceId, token) => {
     }
   })
 }
+
+export const deleteCardio = (cardioId, token) => {
+  return fetch(`/api/exercise/cardio/${cardioId}`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+    }
+  })
+}
+
+export const deleteResistance = (resistanceId, token) => {
+  return fetch(`/api/exercise/resistance/${resistanceId}`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+    }
+  })
+}

@@ -20,14 +20,6 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // get all Resistance
-  getAllResistance(req, res) {
-    Resistance.find({})
-      .sort({ date: "desc" })
-      .then((dbResistanceData) => res.json(dbResistanceData))
-      .catch((err) => res.status(500).json(err));
-  },
-
   // get one Resistance by id
   getResistanceById({ params }, res) {
     Resistance.findOne({ _id: params.id })
