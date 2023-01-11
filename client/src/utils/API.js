@@ -45,3 +45,21 @@ export const createResistance = (resistanceData, token) => {
     body: JSON.stringify(resistanceData)
   })
 }
+
+export const getCardioById = (cardioId, token) => {
+  return fetch(`/api/exercise/cardio/${cardioId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    }
+  })
+}
+
+export const getResistanceById = (resistanceId, token) => {
+  return fetch(`/api/exercise/resistance/${resistanceId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    }
+  })
+}

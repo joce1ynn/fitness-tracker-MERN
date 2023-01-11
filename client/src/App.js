@@ -10,6 +10,7 @@ import Exercise from "./pages/Exercise";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Error from "./pages/Error";
+import SingleExercise from "./pages/SingleExercise"
 import Header from "./components/Header";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/history" element={<History />} />
+          <Route path="/exercise/:id" element={<SingleExercise />} />
           <Route path="/exercise" element={<Exercise />} />
           <Route path="*" element={<Error />} />
         </Routes>

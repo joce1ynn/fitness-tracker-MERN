@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 import { getMe } from '../utils/API';
 import Auth from "../utils/auth"
@@ -56,7 +56,6 @@ export default function History() {
     getUserData();
   }, [loggedIn, userData])
 
-
   // If the user is not logged in, redirect to the login page
   if (!loggedIn) {
     return <Navigate to="/login" />;
@@ -79,7 +78,9 @@ export default function History() {
           return (
             <div className='exercise-div' key={exercise._id}>
               <div className='date'>{dateToDisplay}</div>
-              <div className='exercise'>{exercise.name}</div>
+              <Link to={`/exercise/${exercise._id}`} className='exercise'>
+                <p>{exercise.name}</p>
+              </Link>
             </div>
           )
         })}
