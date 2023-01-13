@@ -15,33 +15,27 @@ export default function SingleExercise() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        // fetch cardio data by id
-        if (type === "cardio") {
-            const displayCardio = async (cardioId) => {
-                const token = loggedIn ? Auth.getToken() : null;
-                if (!token) return false;
+        const displayExercise = async (exerciseId) => {
+            //get token
+            const token = loggedIn ? Auth.getToken() : null;
+            if (!token) return false;
 
+            // fetch cardio data by id
+            if (type === "cardio") {
                 try {
-                    const response = await getCardioById(cardioId, token);
+                    const response = await getCardioById(exerciseId, token);
                     if (!response.ok) { throw new Error('something went wrong!') }
 
                     const cardio = await response.json()
                     cardio.date = formatDate(cardio.date)
                     setCardioData(cardio)
                 } catch (err) { console.error(err) }
-
             }
-            displayCardio(id);
-        }
 
-        // fetch resistance data by id
-        else if (type === "resistance") {
-            const displayResistance = async (resistanceId) => {
-                const token = loggedIn ? Auth.getToken() : null;
-                if (!token) return false;
-
+            // fetch resistance data by id
+            else if (type === "resistance") {
                 try {
-                    const response = await getResistanceById(resistanceId, token);
+                    const response = await getResistanceById(exerciseId, token);
                     if (!response.ok) { throw new Error('something went wrong!') }
 
                     const resistance = await response.json()
@@ -49,8 +43,8 @@ export default function SingleExercise() {
                     setResistanceData(resistance)
                 } catch (err) { console.error(err) }
             }
-            displayResistance(id);
         }
+        displayExercise(id)
     }, [id, type, loggedIn])
 
     if (!loggedIn) {
@@ -58,23 +52,22 @@ export default function SingleExercise() {
     }
 
     const handleDeleteExercise = async (exerciseId) => {
-
         const token = loggedIn ? Auth.getToken() : null;
         if (!token) return false;
-
+        // delete cardio data
         if (type === "cardio") {
             try {
                 const response = await deleteCardio(exerciseId, token);
                 if (!response.ok) { throw new Error('something went wrong!') }
-
             }
             catch (err) { console.error(err) }
         }
+
+        // delete resistance data
         else if (type === "resistance") {
             try {
                 const response = await deleteResistance(exerciseId, token);
                 if (!response.ok) { throw new Error('something went wrong!') }
-
             }
             catch (err) { console.error(err) }
         }
