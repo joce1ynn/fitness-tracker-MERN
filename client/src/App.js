@@ -11,24 +11,21 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Error from "./pages/Error";
 import SingleExercise from "./pages/SingleExercise"
-import Header from "./components/Header";
 
-function App() {
+function App(props) {
+
   return (
     <Router>
-      <Header />
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/exercise/:type/:id" element={<SingleExercise />} />
-          <Route path="/exercise" element={<Exercise />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </div>
-    </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/exercise/:type/:id" element={<SingleExercise />} />
+        <Route path="/exercise" element={<Exercise />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </Router >
   );
 }
 

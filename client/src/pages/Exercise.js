@@ -4,6 +4,7 @@ import Cardio from '../components/Cardio';
 import Resistance from '../components/Resistance';
 import Auth from "../utils/auth";
 import { createCardio, createResistance } from '../utils/API';
+import Header from "../components/Header";
 
 export default function Exercise() {
   const [exerciseType, setExerciseType] = useState("default")
@@ -119,6 +120,7 @@ export default function Exercise() {
 
   return (
     <div>
+      <Header />
       <h2>Add Exercise</h2>
       <form onSubmit={handleSubmit}>
         <div className='type'>

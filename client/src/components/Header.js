@@ -2,8 +2,8 @@ import React from "react";
 import { Navbar, Nav } from "react-bootstrap";
 // cant use <a> in react, instead, use <link> from react router dom
 import { Link } from "react-router-dom";
-
 import Auth from "../utils/auth"
+import heart from "../assets/images/heart.png"
 
 export default function Header() {
   // logour function
@@ -16,10 +16,13 @@ export default function Header() {
 
   return (
 
-    <Navbar collapseOnSelect expand="sm">
+    <Navbar collapseOnSelect expand="sm" variant="dark">
       {loggedIn ? (
         <>
-          <Navbar.Brand as={Link} to="/" className="title">FitTrack</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/" className="brand brand-logged d-flex align-items-center">
+            <img alt="heart" style={{ display: "inline" }} src={heart} className="heart-icon" />
+            FitTrack
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav >
@@ -36,7 +39,10 @@ export default function Header() {
             </Nav>
           </Navbar.Collapse>
         </>) :
-        (<Navbar.Brand as={Link} to="/" className="title mx-auto">FitTrack</Navbar.Brand>)}
+        (<Navbar.Brand as={Link} to="/" className="brand brand-new mx-auto d-flex align-items-center">
+          <img alt="heart" style={{ display: "inline" }} src={heart} className="heart-icon" />
+          FitTrack
+        </Navbar.Brand>)}
     </Navbar >
 
   );

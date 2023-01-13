@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
-
 import Auth from '../utils/auth';
 import { getCardioById, getResistanceById, deleteCardio, deleteResistance } from '../utils/API';
 import { formatDate } from '../utils/dateFormat';
+import Header from "../components/Header";
 
 export default function SingleExercise() {
     const { id, type } = useParams();
@@ -77,6 +77,7 @@ export default function SingleExercise() {
 
     return (
         <div>
+            <Header />
             {deleted ?
                 (<div>
                     <h3>Exercise is deleted!</h3>

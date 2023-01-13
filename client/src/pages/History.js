@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-
 import { getMe } from '../utils/API';
 import Auth from "../utils/auth"
 import { formatDate } from '../utils/dateFormat';
+import Header from "../components/Header";
+
 
 export default function History() {
   const [userData, setUserData] = useState({});
@@ -59,6 +60,7 @@ export default function History() {
   let currentDate;
   return (
     <div>
+      <Header />
       <h2>History</h2>
       {exerciseData.length ? null :
         (<div>
