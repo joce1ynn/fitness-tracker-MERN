@@ -1,3 +1,7 @@
+:root {
+  --main-color: #b3f12c;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,8 +9,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: whitesmoke !important;
-  background-color: black !important;
 }
 
 code {
@@ -19,9 +21,11 @@ code {
   height: 24px;
   margin-right: 3px;
 }
+
 .brand {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 24px;
+  font-weight: 600;
 }
 
 .brand-logged {
@@ -32,9 +36,22 @@ code {
   margin-top: 20px;
 }
 
+.navbar-toggler-icon-home {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='whitesmoke' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
 .nav-link {
   text-align: right;
   margin-right: 5px;
+  font-weight: 500;
+}
+
+.home-nav {
+  color: whitesmoke;
+}
+
+.home-nav:hover {
+  color: black;
 }
 
 /* 2. home page */
@@ -51,6 +68,7 @@ code {
   bottom: 12%;
   left: 50%;
   transform: translate(-50%);
+  color: whitesmoke;
 }
 
 .title {
@@ -69,6 +87,6 @@ code {
   width: 200px;
   height: 40px;
   border-radius: 20px;
-  background-color: #b3f12c;
+  background-color: var(--main-color);
   font-weight: 800;
 }
