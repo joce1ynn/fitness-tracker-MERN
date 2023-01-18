@@ -121,26 +121,27 @@ export default function Exercise() {
   return (
     <div>
       <Header />
-      <h2>Add Exercise</h2>
-      <form onSubmit={handleSubmit}>
-        <div className='type'>
-          <label>Type:</label>
-          <select value={exerciseType} onChange={handleTypeChange}>
-            <option disabled value="default">Select Exercise Type</option>
-            <option value="cardio" >Cardio</option>
-            <option value="resistance" >Resistance</option>
-          </select>
-        </div>
-        {/* Render the component based on the selected option */}
-        {exerciseType === 'cardio' &&
-          <Cardio cardioForm={cardioForm} handleCardioChange={handleCardioChange} />}
-        {exerciseType === 'resistance' &&
-          <Resistance resistanceForm={resistanceForm} handleResistanceChange={handleResistanceChange} />}
-        <input type="submit" value="Add"
-          disabled={!validateForm(cardioForm, exerciseType) && !validateForm(resistanceForm, exerciseType)} />
-        <p>{message}</p>
-      </form>
-
+      <div className="exercise d-flex flex-column align-items-center">
+        <h2 className='title'>Add Exercise</h2>
+        <form onSubmit={handleSubmit} className="exercise-form d-flex flex-column">
+          <div className='type'>
+            <label>Type:</label>
+            <select value={exerciseType} onChange={handleTypeChange}>
+              <option disabled value="default">Select Exercise Type</option>
+              <option value="cardio" >Cardio</option>
+              <option value="resistance" >Resistance</option>
+            </select>
+          </div>
+          {/* Render the component based on the selected option */}
+          {exerciseType === 'cardio' &&
+            <Cardio cardioForm={cardioForm} handleCardioChange={handleCardioChange} />}
+          {exerciseType === 'resistance' &&
+            <Resistance resistanceForm={resistanceForm} handleResistanceChange={handleResistanceChange} />}
+          <input type="submit" value="Add"
+            disabled={!validateForm(cardioForm, exerciseType) && !validateForm(resistanceForm, exerciseType)} />
+          <p>{message}</p>
+        </form>
+      </div>
     </div>
   );
 }

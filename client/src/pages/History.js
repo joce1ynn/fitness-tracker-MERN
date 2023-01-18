@@ -8,8 +8,8 @@ import Header from "../components/Header";
 export default function History() {
   const [userData, setUserData] = useState({});
   const [exerciseData, setExerciseData] = useState([])
-
   const loggedIn = Auth.loggedIn();
+  let currentDate;
 
   // everytime loggedIn/userdata changes, the getuserdata runs
   useEffect(() => {
@@ -56,34 +56,37 @@ export default function History() {
     return <Navigate to="/login" />;
   }
 
-  let currentDate;
   return (
     <div>
       <Header />
-      <h2>History</h2>
-      {exerciseData.length ? null :
-        (<div>
-          <h3>No exercise data yet!</h3>
-          <Link to="/exercise"><button>Add Exercise</button></Link>
+      <div className="exercise d-flex flex-column align-items-center">
+        <h2 className='title'>History</h2>
+        {exerciseData.length ? null :
+          (<div>
+            <h3>No exercise data yet!</h3>
+            <Link to="/exercise"><button>Add Exercise</button></Link>
+          </div>
+          )}
+        <div>
+          {exerciseData.map((exercise) => {
+            let dateToDisplay;
+            if (exercise.date !== currentDate) {
+              currentDate = exercise.date;
+              dateToDisplay = exercise.date;
+            }
+            return (
+              <div className='exercise-div d-flex' key={exercise._id}>
+                <div className='date'>{dateToDisplay}</div>
+                <Link className='text-decoration-none' to={`/exercise/${exercise.type}/${exercise._id}`}>
+                  <div className={`exercise-name ${exercise.type === "cardio" ? "cardio-name" : "resistance-name"}`}>
+                    {exercise.name}
+                  </div>
+                </Link>
+              </div>
+            )
+          })}
         </div>
-        )}
-      <div>
-        {exerciseData.map((exercise) => {
-          let dateToDisplay;
-          if (exercise.date !== currentDate) {
-            currentDate = exercise.date;
-            dateToDisplay = exercise.date;
-          }
-          return (
-            <div className='exercise-div' key={exercise._id}>
-              <div className='date'>{dateToDisplay}</div>
-              <Link to={`/exercise/${exercise.type}/${exercise._id}`} className='exercise'>
-                <p>{exercise.name}</p>
-              </Link>
-            </div>
-          )
-        })}
-      </div>
+      </div >
     </div >
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "../utils/API";
 import Auth from "../utils/auth";
 import Header from "../components/Header";
@@ -7,6 +7,8 @@ import Header from "../components/Header";
 export default function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [showAlert, setShowAlert] = useState(false);
+
+  const loggedIn = Auth.loggedIn();
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -45,6 +47,11 @@ export default function Login() {
       password: "",
     });
   };
+
+  // If the user is logged in, redirect to the home page
+  if (loggedIn) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="signup d-flex flex-column align-items-center justify-content-center text-center">

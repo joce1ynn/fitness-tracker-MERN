@@ -72,7 +72,7 @@ code {
   color: whitesmoke;
 }
 
-.title {
+.home-title {
   font-weight: 900;
 }
 
@@ -92,8 +92,9 @@ code {
   font-weight: 800;
 }
 
-/* sign up and login page  */
-.signup {
+/* 3. sign up and login page  */
+.signup,
+.exercise {
   height: 100vh;
 }
 
@@ -124,4 +125,35 @@ code {
 
 .message {
   color: red;
+}
+
+/* exercise page  */
+.exercise-div {
+  margin: 15px auto;
+}
+
+.date {
+  min-width: 90px;
+  margin-right: 16px;
+  font-weight: bold;
+}
+
+.exercise-name {
+  width: 200px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.cardio-name {
+  background-color: var(--main-color);
+}
+
+.resistance-name {
+  background-color: black;
+}
+
+.exercise-name:hover {
+  background-color: yellow;
 }

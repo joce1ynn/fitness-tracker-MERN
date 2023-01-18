@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { createUser } from "../utils/API";
 import Auth from "../utils/auth";
 import Header from "../components/Header";
 
 
 export default function Signup() {
+  const loggedIn = Auth.loggedIn();
+
   // set up the orginal state of the form
   const [formState, setFormState] = useState({
     username: "",
@@ -52,6 +54,11 @@ export default function Signup() {
     }
   };
 
+  // If the user is logged in, redirect to the home page
+  if (loggedIn) {
+    return <Navigate to="/" />;
+  }
+
   return (
 
     <div className="signup d-flex flex-column align-items-center justify-content-center text-center">
@@ -94,7 +101,7 @@ export default function Signup() {
         <div className="btn-div">
           <button disabled={!(formState.username && formState.email && formState.password)}
             className="signup-btn mx-auto my-auto"
-          >Create your account</button>
+          >Sign Up</button>
         </div>
 
         {/* --------------------login link-------------------- */}
