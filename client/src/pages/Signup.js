@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { createUser } from "../utils/API";
 import Auth from "../utils/auth";
+import Header from "../components/Header";
+
 
 export default function Signup() {
   // set up the orginal state of the form
@@ -52,60 +53,57 @@ export default function Signup() {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Sign Up</h2>
-        <form onSubmit={handleFormSubmit}>
-          {/* --------------------username-------------------- */}
-          <label htmlFor="username">Username</label>
-          <input
-            className="form-input"
-            value={formState.username}
-            placeholder="Your username"
-            name="username"
-            type="username"
-            onChange={handleChange}
-          />
 
-          {/* --------------------email-------------------- */}
-          <label htmlFor="email">Email</label>
-          <input
-            className="form-input"
-            value={formState.email}
-            placeholder="youremail@gmail.com"
-            name="email"
-            type="email"
-            onChange={handleChange}
-          />
+    <div className="signup d-flex flex-column align-items-center justify-content-center text-center">
+      <Header />
+      <form onSubmit={handleFormSubmit} className="signup-form d-flex flex-column">
+        {/* --------------------username-------------------- */}
+        <label htmlFor="username">Username</label>
+        <input
+          className="form-input"
+          value={formState.username}
+          placeholder="Your username"
+          name="username"
+          type="username"
+          onChange={handleChange}
+        />
 
-          {/* -------------------- password-------------------- */}
-          <label htmlFor="password">Password</label>
-          <input
-            className="form-input"
-            value={formState.password}
-            placeholder="********"
-            name="password"
-            type="password"
-            onChange={handleChange}
-          />
+        {/* --------------------email-------------------- */}
+        <label htmlFor="email">Email</label>
+        <input
+          className="form-input"
+          value={formState.email}
+          placeholder="youremail@gmail.com"
+          name="email"
+          type="email"
+          onChange={handleChange}
+        />
 
-          {/* --------------------sign up btn-------------------- */}
-          <button disabled={
-            !(
-              formState.username &&
-              formState.email &&
-              formState.password
-            )
-          }>Create your account</button>
+        {/* -------------------- password-------------------- */}
+        <label htmlFor="password">Password</label>
+        <input
+          className="form-input"
+          value={formState.password}
+          placeholder="********"
+          name="password"
+          type="password"
+          onChange={handleChange}
+        />
 
-          {/* --------------------login link-------------------- */}
-          <p>
-            Already have an account?{' '}
-            <Link to="/login">Log in</Link>
-          </p>
-        </form>
-        {showAlert && <div>Signup failed</div>}
-      </div>
+        {/* --------------------sign up btn-------------------- */}
+        <div className="btn-div">
+          <button disabled={!(formState.username && formState.email && formState.password)}
+            className="signup-btn mx-auto my-auto"
+          >Create your account</button>
+        </div>
+
+        {/* --------------------login link-------------------- */}
+        <p className="link-btn">
+          Already have an account?{' '}
+          <Link to="/login">Log in</Link>
+        </p>
+        {showAlert && <div className="message">Signup failed</div>}
+      </form>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { loginUser } from "../utils/API";
 import Auth from "../utils/auth";
+import Header from "../components/Header";
 
 export default function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -47,44 +47,43 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Login</h2>
-        <form onSubmit={handleFormSubmit}>
-          {/* --------------------email-------------------- */}
-          <label htmlFor="email">Email</label>
-          <input
-            className="form-input"
-            value={formState.email}
-            placeholder="youremail@gmail.com"
-            name="email"
-            type="email"
-            onChange={handleChange}
-          />
+    <div className="signup d-flex flex-column align-items-center justify-content-center text-center">
+      <Header />
+      <form onSubmit={handleFormSubmit} className="signup-form d-flex flex-column">
+        {/* --------------------email-------------------- */}
+        <label htmlFor="email">Email</label>
+        <input
+          className="form-input"
+          value={formState.email}
+          placeholder="youremail@gmail.com"
+          name="email"
+          type="email"
+          onChange={handleChange}
+        />
 
-          {/* -------------------- password-------------------- */}
-          <label htmlFor="password">Password</label>
-          <input
-            className="form-input"
-            value={formState.password}
-            placeholder="********"
-            name="password"
-            type="password"
-            onChange={handleChange}
-          />
+        {/* -------------------- password-------------------- */}
+        <label htmlFor="password">Password</label>
+        <input
+          className="form-input"
+          value={formState.password}
+          placeholder="********"
+          name="password"
+          type="password"
+          onChange={handleChange}
+        />
 
-          {/* --------------------login btn-------------------- */}
-          <button disabled={!(formState.email && formState.password)}>Login</button>
-
-          {/* --------------------signup link-------------------- */}
-          <p>
-            No account?{' '}
-            <Link to="/signup">Create one</Link>
-
-          </p>
-        </form>
-        {showAlert && <div>Login failed</div>}
-      </div>
+        {/* --------------------login btn-------------------- */}
+        <div className="btn-div">
+          <button disabled={!(formState.email && formState.password)}
+            className="signup-btn mx-auto my-auto">Login</button>
+        </div>
+        {/* --------------------signup link-------------------- */}
+        <p className="link-btn">
+          New to FitTrack?{' '}
+          <Link to="/signup" >Create one</Link>
+        </p>
+        {showAlert && <div className="message">Login failed</div>}
+      </form>
     </div>
   );
 }

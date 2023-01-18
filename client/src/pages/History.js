@@ -5,7 +5,6 @@ import Auth from "../utils/auth"
 import { formatDate } from '../utils/dateFormat';
 import Header from "../components/Header";
 
-
 export default function History() {
   const [userData, setUserData] = useState({});
   const [exerciseData, setExerciseData] = useState([])

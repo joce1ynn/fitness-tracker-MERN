@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: whitesmoke !important;
 }
 
 code {
@@ -51,7 +52,7 @@ code {
 }
 
 .home-nav:hover {
-  color: black;
+  color: var(--main-color);
 }
 
 /* 2. home page */
@@ -76,12 +77,12 @@ code {
 }
 
 .home-text {
-  margin: 10px auto;
+  margin: 10px auto 15px auto;
   font-size: 15px;
 }
 
-.home-btn {
-  margin-top: 20px;
+.home-btn,
+.signup-btn {
   border: none;
   outline: none;
   width: 200px;
@@ -89,4 +90,38 @@ code {
   border-radius: 20px;
   background-color: var(--main-color);
   font-weight: 800;
+}
+
+/* sign up and login page  */
+.signup {
+  height: 100vh;
+}
+
+.signup-form {
+  width: 300px;
+  margin: 20px 0 90px 0;
+}
+
+.signup-form label {
+  text-align: left;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.signup-form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+.btn-div {
+  margin: 18px auto;
+}
+
+.link-btn {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.message {
+  color: red;
 }
