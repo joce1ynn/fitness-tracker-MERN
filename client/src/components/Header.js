@@ -14,10 +14,13 @@ export default function Header() {
   const loggedIn = Auth.loggedIn();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const isLoginPage = location.pathname === '/login';
+  const isSignupPage = location.pathname === '/signup';
+
 
   return (
 
-    <Navbar collapseOnSelect expand="sm" variant={isHomePage ? "dark" : "light"}>
+    <Navbar collapseOnSelect expand="sm" variant="dark" className={loggedIn && !isHomePage ? "bg-dark" : null}>
       {loggedIn ? (
         <>
           <Navbar.Brand as={Link} to="/" className="brand brand-logged d-flex align-items-center">
@@ -28,19 +31,14 @@ export default function Header() {
           <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
             <Nav >
               {/* use eventKey to show navbar style from react bootstrap */}
-              <Nav.Link as={Link} to="/exercise" eventKey="1" className={isHomePage ? "home-nav" : null}>
-                Exercise
-              </Nav.Link>
-              < Nav.Link as={Link} to="/history" eventKey="2" className={isHomePage ? "home-nav" : null}>
-                History
-              </Nav.Link>
-              <Nav.Link as={Link} to="/" eventKey="3" onClick={logout} className={isHomePage ? "home-nav" : null}>
-                Logout
-              </Nav.Link>
+              <Nav.Link as={Link} to="/exercise" eventKey="1" >Exercise</Nav.Link>
+              <Nav.Link as={Link} to="/history" eventKey="2">History</Nav.Link>
+              <Nav.Link as={Link} to="/" eventKey="3" onClick={logout} >Logout </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </>) :
-        (<Navbar.Brand as={Link} to="/" className="brand brand-new mx-auto d-flex align-items-center">
+        (<Navbar.Brand as={Link} to="/" className={`brand brand-new mx-auto d-flex align-items-center
+          ${isLoginPage || isSignupPage ? "brand-text" : null}`}>
           <img alt="heart" style={{ display: "inline" }} src={heart} className="heart-icon" />
           FitTrack
         </Navbar.Brand>)}

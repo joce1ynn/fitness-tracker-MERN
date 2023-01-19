@@ -63,8 +63,8 @@ export default function History() {
         <h2 className='title'>History</h2>
         {exerciseData.length ? null :
           (<div>
-            <h3>No exercise data yet!</h3>
-            <Link to="/exercise"><button>Add Exercise</button></Link>
+            <h3 className='history-text'>No exercise data yet...</h3>
+            <Link to="/exercise"><button className='home-btn'>Add Exercise</button></Link>
           </div>
           )}
         <div>
@@ -76,7 +76,7 @@ export default function History() {
             }
             return (
               <div className='exercise-div d-flex' key={exercise._id}>
-                <div className='date'>{dateToDisplay}</div>
+                <div className='date d-flex align-items-center'>{dateToDisplay}</div>
                 <Link className='text-decoration-none' to={`/exercise/${exercise.type}/${exercise._id}`}>
                   <div className={`exercise-name ${exercise.type === "cardio" ? "cardio-name" : "resistance-name"}`}>
                     {exercise.name}

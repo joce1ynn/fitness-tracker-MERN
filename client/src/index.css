@@ -9,7 +9,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: whitesmoke !important;
 }
 
 code {
@@ -31,13 +30,18 @@ code {
 
 .brand-logged {
   margin-left: 5px;
+  font-size: 20px;
 }
 
 .brand-new {
   margin-top: 20px;
 }
 
-.navbar-toggler-icon-home {
+.brand-text {
+  color: black;
+}
+
+.navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='whitesmoke' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
@@ -45,13 +49,10 @@ code {
   text-align: right;
   margin-right: 5px;
   font-weight: 500;
+  color: white;
 }
 
-.home-nav {
-  color: whitesmoke;
-}
-
-.home-nav:hover {
+.nav-link:hover {
   color: var(--main-color);
 }
 
@@ -111,12 +112,17 @@ code {
 .signup-form input {
   margin-bottom: 15px;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 20px;
   border-width: 1px;
 }
 
 .btn-div {
   margin: 18px auto;
+}
+
+.signup-btn {
+  width: 300px;
+  height: 46px;
 }
 
 .link-btn {
@@ -127,13 +133,32 @@ code {
   color: red;
 }
 
-/* exercise page  */
+/* history page  */
+.title {
+  margin: 30px auto 20px auto;
+  font-weight: 900;
+}
+
+.title:after {
+  content: ""; /* This is necessary for the pseudo element to work. */
+  display: block; /* This will put the pseudo element on its own line. */
+  margin: 0 auto; /* This will center the border. */
+  width: 35px; /* Change this to whatever width you want. */
+  padding-top: 3px; /* This creates some space between the element and the border. */
+  border-bottom: 2px solid; /* This creates the border. Replace black with whatever color you want. */
+}
+
+.history-text {
+  margin: 20px auto;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 .exercise-div {
   margin: 15px auto;
 }
 
 .date {
-  min-width: 90px;
+  min-width: 70px;
   margin-right: 16px;
   font-weight: bold;
 }
@@ -141,19 +166,24 @@ code {
 .exercise-name {
   width: 200px;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   color: white;
   font-weight: bold;
+  position: relative;
+  transform: rotateY(15deg);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .cardio-name {
   background-color: var(--main-color);
+  color: black;
 }
 
 .resistance-name {
-  background-color: black;
+  background-color: lightskyblue;
+  color: black;
 }
 
 .exercise-name:hover {
-  background-color: yellow;
+  transform: rotateY(0deg);
 }
