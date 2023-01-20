@@ -89,7 +89,7 @@ export default function Login() {
           New to FitTrack?{' '}
           <Link to="/signup" >Create one</Link>
         </p>
-        {showAlert && <div className="message">Login failed</div>}
+        {showAlert && <div className="err-message">Login failed</div>}
       </form>
     </div>
   );

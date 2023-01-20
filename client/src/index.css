@@ -87,7 +87,8 @@ code {
 }
 
 .home-btn,
-.signup-btn {
+.signup-btn,
+.submit-btn {
   border: none;
   outline: none;
   width: 200px;
@@ -133,7 +134,7 @@ code {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.message {
+.err-message {
   color: red;
 }
 
@@ -147,7 +148,7 @@ code {
   content: ""; /* This is necessary for the pseudo element to work. */
   display: block; /* This will put the pseudo element on its own line. */
   margin: 0 auto; /* This will center the border. */
-  width: 35px; /* Change this to whatever width you want. */
+  width: 35px; /* length of border */
   padding-top: 3px; /* This creates some space between the element and the border. */
   border-bottom: 2px solid; /* This creates the border. Replace black with whatever color you want. */
 }
@@ -180,13 +181,13 @@ code {
 
 .cardio-title,
 .cardio-btn {
-  background-color: var(--main-color);
+  background-color: lightskyblue;
   color: black;
 }
 
 .resistance-title,
 .resistance-btn {
-  background-color: lightskyblue;
+  background-color: var(--main-color);
   color: black;
 }
 
@@ -220,19 +221,52 @@ code {
 
 /* 6. cardio and resistance page */
 .cardio {
-  background-image: url("./assets/images/running.jpg");
+  background-image: url("./assets/images/running.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* 100% of the viewport height */
+  height: 100vh;
   color: white;
 }
 
 .resistance {
-  background-image: url("./assets/images/dumbell.jpg");
+  background-image: url("./assets/images/dumbell.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* 100% of the viewport height */
+  height: 100vh;
   color: white;
+}
+
+.cardio-form,
+.resistance-form {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+}
+
+.cardio-form label,
+.resistance-form label {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.cardio-form input,
+.resistance-form input {
+  margin-bottom: 10px;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid white;
+}
+
+.submit-btn {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.message {
+  font-weight: bold;
+  color: white;
+  margin-top: 15px;
+  text-align: center;
 }

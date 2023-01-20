@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { useNavigate, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Auth from "../utils/auth";
 import { createCardio } from '../utils/API';
 import Header from "./Header";
-import cardioIcon from "../assets/images/cardio.png"
+import cardioIcon from "../assets/images/cardio-w.png"
 
 export default function Cardio() {
     const [cardioForm, setCardioForm] = useState({
@@ -17,8 +17,6 @@ export default function Cardio() {
     const [startDate, setStartDate] = useState(new Date());
     const [message, setMessage] = useState("")
     const loggedIn = Auth.loggedIn();
-    const navigate = useNavigate()
-
 
     const handleCardioChange = (event) => {
         const { name, value } = event.target;
@@ -58,10 +56,10 @@ export default function Cardio() {
                     throw new Error('something went wrong!');
                 }
 
-                setMessage("Cardio successfully created!")
-                setTimeout(() => {
-                    setMessage("")
-                }, 3000);
+                setMessage("Cardio successfully added!")
+                // setTimeout(() => {
+                //     setMessage("")
+                // }, 3000);
             } catch (err) {
                 console.error(err)
             }
@@ -86,35 +84,24 @@ export default function Cardio() {
             <div className="cardio-div d-flex flex-column align-items-center">
                 <h2 className='title text-center'>Add Exercise</h2>
                 <img alt="cardio" src={cardioIcon} className="exercise-icon" />
-                <h3>Cardio</h3>
                 <form className='cardio-form d-flex flex-column' onSubmit={handleCardioSubmit}>
-                    <div className="cardio-name">
-                        <label >Name:</label>
-                        <input type="text" name="name" id="name" placeholder="Running"
-                            value={cardioForm.name} onChange={handleCardioChange} />
-                    </div>
-                    <div className="distance">
-                        <label >Distance (miles):</label>
-                        <input type="number" name="distance" id="distance" placeholder="0"
-                            value={cardioForm.distance} onChange={handleCardioChange} />
-                    </div>
-                    <div className="duration">
-                        <label >Duration (minutes):</label>
-                        <input type="number" name="duration" id="duration" placeholder="0"
-                            value={cardioForm.duration} onChange={handleCardioChange} />
-                    </div>
-                    <div className="date">
-                        <label >Date:</label>
-                        <DatePicker selected={startDate}
-                            value={cardioForm.date}
-                            onChange={handleDateChange}
-                        />
-                    </div>
-                    <input type="submit" value="Add"
-                        disabled={!validateForm(cardioForm)} />
-                    <button onClick={() => { navigate("/exercise") }}>Back</button>
-                    <p>{message}</p>
+                    <label >Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Running"
+                        value={cardioForm.name} onChange={handleCardioChange} />
+                    <label >Distance (miles):</label>
+                    <input type="number" name="distance" id="distance" placeholder="0"
+                        value={cardioForm.distance} onChange={handleCardioChange} />
+                    <label >Duration (minutes):</label>
+                    <input type="number" name="duration" id="duration" placeholder="0"
+                        value={cardioForm.duration} onChange={handleCardioChange} />
+                    <label >Date:</label>
+                    <DatePicker selected={startDate}
+                        value={cardioForm.date}
+                        onChange={handleDateChange}
+                    />
+                    <button className='submit-btn' type="submit" disabled={!validateForm(cardioForm)} >Add</button>
                 </form>
+                <p className='message'>{message}</p>
             </div>
         </div>
     )

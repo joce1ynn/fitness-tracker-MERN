@@ -109,7 +109,7 @@ export default function Signup() {
           Already have an account?{' '}
           <Link to="/login">Log in</Link>
         </p>
-        {showAlert && <div className="message">Signup failed</div>}
+        {showAlert && <div className="err-message">Signup failed</div>}
       </form>
     </div>
   );
