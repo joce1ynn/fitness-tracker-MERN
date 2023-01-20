@@ -1,117 +1,15 @@
-import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom';
-import Cardio from '../components/Cardio';
-import Resistance from '../components/Resistance';
+import React from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 import Auth from "../utils/auth";
-import { createCardio, createResistance } from '../utils/API';
 import Header from "../components/Header";
+import cardioIcon from "../assets/images/cardio.png"
+import resistanceIcon from "../assets/images/resistance.png"
+
 
 export default function Exercise() {
-  const [exerciseType, setExerciseType] = useState("default")
-  const [cardioForm, setCardioForm] = useState({
-    name: "",
-    distance: "",
-    duration: "",
-    date: ""
-  })
-  const [resistanceForm, setResistanceForm] = useState({
-    name: "",
-    weight: "",
-    sets: "",
-    reps: "",
-    date: ""
-  })
-  const [message, setMessage] = useState("")
-
   const loggedIn = Auth.loggedIn();
+  const navigate = useNavigate()
 
-  const validateForm = (form, type) => {
-    if (type === "cardio") {
-      return form.name && form.distance && form.duration && form.date;
-    } else if (type === "resistance") {
-      return form.name && form.weight && form.sets && form.reps && form.date;
-    }
-    return false;
-  }
-
-  const handleTypeChange = (event) => {
-    setExerciseType(event.target.value);
-    setMessage("")
-  }
-
-  const handleCardioChange = (event) => {
-    const { name, value } = event.target;
-    setCardioForm({ ...cardioForm, [name]: value })
-  }
-
-  const handleResistanceChange = (event) => {
-    const { name, value } = event.target;
-    setResistanceForm({ ...resistanceForm, [name]: value })
-
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    //get token
-    const token = loggedIn ? Auth.getToken() : null;
-    if (!token) return false;
-
-    // get user id 
-    const userId = Auth.getUserId();
-
-    // cardio submit
-    if (validateForm(cardioForm, exerciseType)) {
-      try {
-        // add userid to cardio form
-        cardioForm.userId = userId;
-
-        const response = await createCardio(cardioForm, token);
-
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
-
-        setMessage("Cardio successfully created!")
-      } catch (err) {
-        console.error(err)
-      }
-    }
-
-    // resistance submit
-    else if (validateForm(resistanceForm, exerciseType)) {
-      try {
-        // add userid to resistance form
-        resistanceForm.userId = userId;
-
-        const response = await createResistance(resistanceForm, token);
-
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
-
-        setMessage("Resistance successfully created!")
-
-      } catch (err) {
-        console.error(err)
-      }
-    }
-
-    // clear form input
-    setCardioForm({
-      name: "",
-      distance: "",
-      duration: "",
-      date: ""
-    });
-    setResistanceForm({
-      name: "",
-      weight: "",
-      sets: "",
-      reps: "",
-      date: ""
-    });
-  }
 
   // If the user is not logged in, redirect to the login page
   if (!loggedIn) {
@@ -123,24 +21,18 @@ export default function Exercise() {
       <Header />
       <div className="exercise d-flex flex-column align-items-center">
         <h2 className='title'>Add Exercise</h2>
-        <form onSubmit={handleSubmit} className="exercise-form d-flex flex-column">
-          <div className='type'>
-            <label>Type:</label>
-            <select value={exerciseType} onChange={handleTypeChange}>
-              <option disabled value="default">Select Exercise Type</option>
-              <option value="cardio" >Cardio</option>
-              <option value="resistance" >Resistance</option>
-            </select>
-          </div>
-          {/* Render the component based on the selected option */}
-          {exerciseType === 'cardio' &&
-            <Cardio cardioForm={cardioForm} handleCardioChange={handleCardioChange} />}
-          {exerciseType === 'resistance' &&
-            <Resistance resistanceForm={resistanceForm} handleResistanceChange={handleResistanceChange} />}
-          <input type="submit" value="Add"
-            disabled={!validateForm(cardioForm, exerciseType) && !validateForm(resistanceForm, exerciseType)} />
-          <p>{message}</p>
-        </form>
+        <div className='cardio-div'>
+          <button className='exercise-btn' onClick={() => navigate("/exercise/cardio")}>
+            <img alt="cardio" src={cardioIcon} className="exercise-icon" />
+            <p>Cardio</p>
+          </button>
+        </div>
+        <div className='resistance-div'>
+          <button className='exercise-btn' onClick={() => navigate("/exercise/resistance")}>
+            <img alt="resistance" src={resistanceIcon} className="exercise-icon" />
+            <p>Resistance</p>
+          </button>
+        </div>
       </div>
     </div>
   );

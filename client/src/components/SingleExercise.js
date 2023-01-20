@@ -3,7 +3,7 @@ import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import Auth from '../utils/auth';
 import { getCardioById, getResistanceById, deleteCardio, deleteResistance } from '../utils/API';
 import { formatDate } from '../utils/dateFormat';
-import Header from "../components/Header";
+import Header from "./Header";
 
 export default function SingleExercise() {
     const { id, type } = useParams();
@@ -84,6 +84,7 @@ export default function SingleExercise() {
                     <button onClick={() => navigate("/history")}>Go Back</button>
                 </div>) :
                 (<>
+                    <h2 className='title text-center'>History</h2>
                     {type === "cardio" && (<div className='cardio-div'>
                         <p>Date: {cardioData.date}</p>
                         <p>Type: Cardio</p>
@@ -91,6 +92,8 @@ export default function SingleExercise() {
                         <p>Distance: {cardioData.distance} miles</p>
                         <p>Duration: {cardioData.duration} minutes</p>
                         <button onClick={() => handleDeleteExercise(id)}>Delete Exercise</button>
+                        <button onClick={() => { navigate("/history") }}>Back</button>
+
                     </div>)}
                     {type === "resistance" && (<div className='resistance-div'>
                         <p>Date: {resistanceData.date}</p>
@@ -100,6 +103,8 @@ export default function SingleExercise() {
                         <p>Sets: {resistanceData.sets}</p>
                         <p>Reps: {resistanceData.reps}</p>
                         <button onClick={() => handleDeleteExercise(id)}>Delete Exercise</button>
+                        <button onClick={() => { navigate("/history") }}>Back</button>
+
                     </div>)}
                 </>)}
 

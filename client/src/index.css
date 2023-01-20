@@ -41,6 +41,10 @@ code {
   color: black;
 }
 
+.brand-text:hover {
+  color: black;
+}
+
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='whitesmoke' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
@@ -133,7 +137,7 @@ code {
   color: red;
 }
 
-/* history page  */
+/* 4. history page  */
 .title {
   margin: 30px auto 20px auto;
   font-weight: 900;
@@ -174,16 +178,21 @@ code {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.cardio-name {
+.cardio-title {
   background-color: var(--main-color);
   color: black;
 }
 
-.resistance-name {
+.resistance-title {
   background-color: lightskyblue;
   color: black;
 }
 
 .exercise-name:hover {
   transform: rotateY(0deg);
+}
+
+/* 5.exercise page  */
+.exercise-icon {
+  height: 40px;
 }
