@@ -84,9 +84,9 @@ export default function Resistance() {
     }
 
     return (
-        <div>
+        <div className='resistance'>
             <Header />
-            <div className="cardio d-flex flex-column align-items-center">
+            <div className="resistance-div d-flex flex-column align-items-center">
                 <h2 className='title text-center'>Add Exercise</h2>
                 <img alt="resistance" src={resistanceIcon} className="exercise-icon" />
                 <h3>Resistance</h3>

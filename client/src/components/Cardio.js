@@ -81,9 +81,9 @@ export default function Cardio() {
     }
 
     return (
-        <div>
+        <div className='cardio'>
             <Header />
-            <div className="cardio d-flex flex-column align-items-center">
+            <div className="cardio-div d-flex flex-column align-items-center">
                 <h2 className='title text-center'>Add Exercise</h2>
                 <img alt="cardio" src={cardioIcon} className="exercise-icon" />
                 <h3>Cardio</h3>

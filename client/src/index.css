@@ -116,7 +116,7 @@ code {
 .signup-form input {
   margin-bottom: 15px;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   border-width: 1px;
 }
 
@@ -216,4 +216,23 @@ code {
 .cardio-btn:hover,
 .resistance-btn:hover {
   box-shadow: 0 0 10px 0 whitesmoke inset, 0 0 10px 4px whitesmoke;
+}
+
+/* 6. cardio and resistance page */
+.cardio {
+  background-image: url("./assets/images/running.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* 100% of the viewport height */
+  color: white;
+}
+
+.resistance {
+  background-image: url("./assets/images/dumbell.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* 100% of the viewport height */
+  color: white;
 }
