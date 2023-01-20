@@ -99,7 +99,7 @@ code {
 
 /* 3. sign up and login page  */
 .signup,
-.exercise {
+.history {
   height: 100vh;
 }
 
@@ -157,7 +157,7 @@ code {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.exercise-div {
+.history-div {
   margin: 15px auto;
 }
 
@@ -167,7 +167,7 @@ code {
   font-weight: bold;
 }
 
-.exercise-name {
+.history-name {
   width: 200px;
   padding: 10px 20px;
   border-radius: 5px;
@@ -178,21 +178,42 @@ code {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.cardio-title {
+.cardio-title,
+.cardio-btn {
   background-color: var(--main-color);
   color: black;
 }
 
-.resistance-title {
+.resistance-title,
+.resistance-btn {
   background-color: lightskyblue;
   color: black;
 }
 
-.exercise-name:hover {
+.history-name:hover {
   transform: rotateY(0deg);
 }
 
 /* 5.exercise page  */
 .exercise-icon {
   height: 40px;
+}
+
+.cardio-btn,
+.resistance-btn {
+  width: 160px;
+  height: 160px;
+  margin: 20px auto;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  transition: all 150ms ease-in-out;
+}
+
+.cardio-btn:hover,
+.resistance-btn:hover {
+  box-shadow: 0 0 10px 0 whitesmoke inset, 0 0 10px 4px whitesmoke;
 }
