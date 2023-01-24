@@ -87,8 +87,8 @@ export default function Resistance() {
             <Header />
             <div className="resistance-div d-flex flex-column align-items-center">
                 <h2 className='title text-center'>Add Exercise</h2>
-                <img alt="resistance" src={resistanceIcon} className="exercise-icon" />
                 <form className='resistance-form d-flex flex-column' onSubmit={handleResistanceSubmit}>
+                    <div className='d-flex justify-content-center'><img alt="resistance" src={resistanceIcon} className="exercise-form-icon" /></div>
                     <label>Name:</label>
                     <input type="text" name="name" id="name" placeholder="Bench Press"
                         value={resistanceForm.name} onChange={handleResistanceChange} />
@@ -101,10 +101,8 @@ export default function Resistance() {
                     <label>Reps:</label>
                     <input type="number" name="reps" id="reps" placeholder="0"
                         value={resistanceForm.reps} onChange={handleResistanceChange} />
-                    <label>Date:</label>
-                    <DatePicker selected={startDate}
-                        value={resistanceForm.date}
-                        onChange={handleDateChange} />
+                    <label >Date:</label>
+                    <DatePicker selected={startDate} value={resistanceForm.date} onChange={handleDateChange} placeholderText="mm/dd/yyyy"/>
                     <button className='submit-btn' type="submit" disabled={!validateForm(resistanceForm)} >Add</button>
                 </form>
                 <p className='message'>{message}</p>

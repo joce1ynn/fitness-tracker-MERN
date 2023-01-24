@@ -83,8 +83,8 @@ export default function Cardio() {
             <Header />
             <div className="cardio-div d-flex flex-column align-items-center">
                 <h2 className='title text-center'>Add Exercise</h2>
-                <img alt="cardio" src={cardioIcon} className="exercise-icon" />
                 <form className='cardio-form d-flex flex-column' onSubmit={handleCardioSubmit}>
+                    <div className='d-flex justify-content-center'><img alt="cardio" src={cardioIcon} className="exercise-form-icon" /></div>
                     <label >Name:</label>
                     <input type="text" name="name" id="name" placeholder="Running"
                         value={cardioForm.name} onChange={handleCardioChange} />
@@ -94,12 +94,9 @@ export default function Cardio() {
                     <label >Duration (minutes):</label>
                     <input type="number" name="duration" id="duration" placeholder="0"
                         value={cardioForm.duration} onChange={handleCardioChange} />
-                    <label >Date:</label>
-                    <DatePicker selected={startDate}
-                        value={cardioForm.date}
-                        onChange={handleDateChange}
-                    />
-                    <button className='submit-btn' type="submit" disabled={!validateForm(cardioForm)} >Add</button>
+                    <label>Date:</label>
+                    <DatePicker selected={startDate} value={cardioForm.date} onChange={handleDateChange} placeholderText="mm/dd/yyyy" />
+                    <button className='submit-btn cardio-submit-btn' type="submit" disabled={!validateForm(cardioForm)} >Add</button>
                 </form>
                 <p className='message'>{message}</p>
             </div>

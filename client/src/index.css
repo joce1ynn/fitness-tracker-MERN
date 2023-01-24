@@ -214,6 +214,12 @@ code {
   height: 40px;
 }
 
+.exercise-form-icon {
+  height: 50px;
+  width: 50px;
+  margin: 5px auto 20px auto;
+}
+
 .cardio-btn,
 .resistance-btn {
   width: 160px;
@@ -254,15 +260,24 @@ code {
 
 .cardio-form,
 .resistance-form {
-  background-color: rgba(255, 255, 255, 0.2);
+  /* background-color: rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   padding: 20px;
-  width: 280px;
+  width: 290px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(40px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .cardio-form label,
 .resistance-form label {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  color: var(--main-color);
+}
+
+.cardio-form label {
+  color: rgb(15, 93, 142);
 }
 
 .cardio-form input,
@@ -271,6 +286,8 @@ code {
   border: none;
   background: transparent;
   border-bottom: 1px solid white;
+  color: white;
+  width: 100%;
 }
 
 .submit-btn {
@@ -278,9 +295,13 @@ code {
   margin-top: 15px;
 }
 
+.cardio-submit-btn {
+  background-color: lightskyblue;
+}
+
 .message {
   font-weight: bold;
-  color: white;
+  color: var(--main-color);
   margin-top: 15px;
   text-align: center;
 }
