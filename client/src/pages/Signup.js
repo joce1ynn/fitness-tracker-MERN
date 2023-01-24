@@ -43,11 +43,11 @@ export default function Signup() {
       }
 
       // get token and user data from server
-      const { token, user } = await response.json();
+      const { token } = await response.json();
       // use authenticaiton functionality
       Auth.login(token);
 
-      console.log(user);
+
     } catch (err) {
       console.error(err);
       setShowAlert(true);
@@ -56,7 +56,7 @@ export default function Signup() {
 
   // If the user is logged in, redirect to the home page
   if (loggedIn) {
-    return <Navigate to="/" />;
+    return <Navigate to="/exercise" />;
   }
 
   return (

@@ -4,6 +4,8 @@ import { getMe } from '../utils/API';
 import Auth from "../utils/auth"
 import { formatDate } from '../utils/dateFormat';
 import Header from "../components/Header";
+import cardioIcon from "../assets/images/cardio.png"
+import resistanceIcon from "../assets/images/resistance.png"
 
 export default function History() {
   const [userData, setUserData] = useState({});
@@ -78,9 +80,22 @@ export default function History() {
               <div className='history-div d-flex' key={exercise._id}>
                 <div className='date d-flex align-items-center'>{dateToDisplay}</div>
                 <Link className='text-decoration-none' to={`/history/${exercise.type}/${exercise._id}`}>
-                  <div className={`history-name ${exercise.type === "cardio" ? "cardio-title" : "resistance-title"}`}>
-                    {exercise.name}
-                  </div>
+                  {exercise.type === "cardio" ? (
+                    <div className="history-card cardio-title d-flex">
+                      <div className='d-flex align-items-center'><img alt="cardio" src={cardioIcon} className="history-icon" /></div>
+                      <div>
+                        <p className='history-name'>{exercise.name}</p>
+                        <p className='history-index'>{exercise.distance} miles </p>
+                      </div>
+                    </div>) : (
+                    <div className="history-card resistance-title d-flex">
+                      <div className='d-flex align-items-center'><img alt="resistance" src={resistanceIcon} className="history-icon" /></div>
+                      <div >
+                        <p className='history-name'>{exercise.name}</p>
+                        <p className='history-index'>{exercise.weight} pounds </p>
+                      </div>
+                    </div>)}
+
                 </Link>
               </div>
             )

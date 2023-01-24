@@ -14,8 +14,8 @@ import SingleExercise from "./components/SingleExercise"
 import Cardio from "./components/Cardio";
 import Resistance from "./components/Resistance";
 
-function App(props) {
 
+function App() {
   return (
     <Router>
       <Routes>
@@ -27,7 +27,6 @@ function App(props) {
         <Route path="/exercise" element={<Exercise />} />
         <Route path="/exercise/cardio" element={<Cardio />} />
         <Route path="/exercise/resistance" element={<Resistance />} />
-
         <Route path="*" element={<Error />} />
       </Routes>
     </Router >

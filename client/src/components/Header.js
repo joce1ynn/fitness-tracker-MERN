@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
 
-    <Navbar collapseOnSelect expand="sm" variant="dark" className={loggedIn && !isHomePage ? "bg-dark" : null}>
+    <Navbar collapseOnSelect expand="sm" variant="dark" bg={loggedIn && !isHomePage ? "dark" : null}>
       {loggedIn ? (
         <>
           <Navbar.Brand as={Link} to="/" className="brand brand-logged d-flex align-items-center">

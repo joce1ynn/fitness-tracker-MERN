@@ -168,15 +168,23 @@ code {
   font-weight: bold;
 }
 
-.history-name {
-  width: 200px;
-  padding: 10px 20px;
+.history-card {
+  width: 240px;
+  padding: 10px 15px;
   border-radius: 5px;
   color: white;
-  font-weight: bold;
   position: relative;
   transform: rotateY(15deg);
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.history-card:hover {
+  transform: rotateY(0deg);
+}
+
+.history-icon {
+  height: 35px;
+  margin-right: 14px;
 }
 
 .cardio-title,
@@ -191,8 +199,14 @@ code {
   color: black;
 }
 
-.history-name:hover {
-  transform: rotateY(0deg);
+.history-name {
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.history-index {
+  margin: 0 auto;
+  font-size: 13px;
 }
 
 /* 5.exercise page  */

@@ -50,7 +50,7 @@ export default function Login() {
 
   // If the user is logged in, redirect to the home page
   if (loggedIn) {
-    return <Navigate to="/" />;
+    return <Navigate to="/exercise" />;
   }
 
   return (
