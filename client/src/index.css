@@ -209,6 +209,10 @@ code {
   font-size: 13px;
 }
 
+.show-btn {
+  margin: 20px auto;
+}
+
 /* 5.exercise page  */
 .exercise-icon {
   height: 40px;

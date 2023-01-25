@@ -10,6 +10,8 @@ import resistanceIcon from "../assets/images/resistance.png"
 export default function History() {
   const [userData, setUserData] = useState({});
   const [exerciseData, setExerciseData] = useState([])
+  const [displayedItems, setDisplayedItems] = useState(6);
+
   const loggedIn = Auth.loggedIn();
   let currentDate;
 
@@ -53,6 +55,14 @@ export default function History() {
     getUserData();
   }, [loggedIn, userData])
 
+  function showMoreItems() {
+    setDisplayedItems(displayedItems + 6);
+  }
+
+  function showLessItems() {
+    setDisplayedItems(displayedItems - 6);
+  }
+
   // If the user is not logged in, redirect to the login page
   if (!loggedIn) {
     return <Navigate to="/login" />;
@@ -70,7 +80,8 @@ export default function History() {
           </div>
           )}
         <div>
-          {exerciseData.map((exercise) => {
+          {/* map the exercise data  */}
+          {exerciseData.slice(0, displayedItems).map((exercise) => {
             let dateToDisplay;
             if (exercise.date !== currentDate) {
               currentDate = exercise.date;
@@ -95,11 +106,16 @@ export default function History() {
                         <p className='history-index'>{exercise.weight} pounds </p>
                       </div>
                     </div>)}
-
                 </Link>
               </div>
             )
           })}
+          {/* show more items  */}
+          <div className='d-flex justify-content-center'>
+            {exerciseData.length > displayedItems ?
+              <button className='show-btn' onClick={showMoreItems}>Show More</button> : null}
+            {displayedItems > 6 ? <button className='show-btn' onClick={showLessItems}>Show Less</button> : null}
+          </div>
         </div>
       </div >
     </div >
