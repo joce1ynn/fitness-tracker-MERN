@@ -214,12 +214,6 @@ code {
   height: 40px;
 }
 
-.exercise-form-icon {
-  height: 50px;
-  width: 50px;
-  margin: 5px auto 20px auto;
-}
-
 .cardio-btn,
 .resistance-btn {
   width: 160px;
@@ -240,8 +234,14 @@ code {
 }
 
 /* 6. cardio and resistance page */
+.exercise-form-icon {
+  height: 50px;
+  width: 50px;
+  margin-bottom: 20px;
+}
+
 .cardio {
-  background-image: url("./assets/images/running.jpeg");
+  background-image: url("./assets/images/running.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -265,7 +265,7 @@ code {
   padding: 20px;
   width: 290px;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(40px);
+  backdrop-filter: blur(30px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
@@ -276,10 +276,6 @@ code {
   color: var(--main-color);
 }
 
-.cardio-form label {
-  color: rgb(15, 93, 142);
-}
-
 .cardio-form input,
 .resistance-form input {
   margin-bottom: 10px;
@@ -288,6 +284,7 @@ code {
   border-bottom: 1px solid white;
   color: white;
   width: 100%;
+  /* font-weight: bold; */
 }
 
 .submit-btn {
@@ -295,13 +292,9 @@ code {
   margin-top: 15px;
 }
 
-.cardio-submit-btn {
-  background-color: lightskyblue;
-}
-
 .message {
   font-weight: bold;
-  color: var(--main-color);
-  margin-top: 15px;
+  color: yellow;
+  margin-top: 20px;
   text-align: center;
 }

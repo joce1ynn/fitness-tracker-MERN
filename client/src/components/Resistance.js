@@ -59,9 +59,9 @@ export default function Resistance() {
                 }
 
                 setMessage("Resistance successfully created!")
-                setTimeout(() => {
-                    setMessage("")
-                }, 3000);
+                // setTimeout(() => {
+                //     setMessage("")
+                // }, 3000);
 
             } catch (err) {
                 console.error(err)
