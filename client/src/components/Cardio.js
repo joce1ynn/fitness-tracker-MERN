@@ -57,9 +57,9 @@ export default function Cardio() {
                 }
 
                 setMessage("Cardio successfully added!")
-                // setTimeout(() => {
-                //     setMessage("")
-                // }, 3000);
+                setTimeout(() => {
+                    setMessage("")
+                }, 3000);
             } catch (err) {
                 console.error(err)
             }

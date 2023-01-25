@@ -59,9 +59,6 @@ export default function History() {
     setDisplayedItems(displayedItems + 6);
   }
 
-  function showLessItems() {
-    setDisplayedItems(displayedItems - 6);
-  }
 
   // If the user is not logged in, redirect to the login page
   if (!loggedIn) {
@@ -69,9 +66,9 @@ export default function History() {
   }
 
   return (
-    <div>
+    <div className='history'>
       <Header />
-      <div className="history d-flex flex-column align-items-center">
+      <div className="d-flex flex-column align-items-center">
         <h2 className='title'>History</h2>
         {exerciseData.length ? null :
           (<div>
@@ -111,11 +108,14 @@ export default function History() {
             )
           })}
           {/* show more items  */}
-          <div className='d-flex justify-content-center'>
-            {exerciseData.length > displayedItems ?
-              <button className='show-btn' onClick={showMoreItems}>Show More</button> : null}
-            {displayedItems > 6 ? <button className='show-btn' onClick={showLessItems}>Show Less</button> : null}
-          </div>
+          {exerciseData.length > displayedItems ?
+            (<div className='d-flex justify-content-center'>
+              <button className='show-btn' onClick={showMoreItems}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+                Show More
+              </button>
+            </div>)
+            : null}
         </div>
       </div >
     </div >

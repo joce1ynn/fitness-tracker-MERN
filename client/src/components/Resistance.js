@@ -59,9 +59,9 @@ export default function Resistance() {
                 }
 
                 setMessage("Resistance successfully created!")
-                // setTimeout(() => {
-                //     setMessage("")
-                // }, 3000);
+                setTimeout(() => {
+                    setMessage("")
+                }, 3000);
 
             } catch (err) {
                 console.error(err)
@@ -102,7 +102,7 @@ export default function Resistance() {
                     <input type="number" name="reps" id="reps" placeholder="0"
                         value={resistanceForm.reps} onChange={handleResistanceChange} />
                     <label >Date:</label>
-                    <DatePicker selected={startDate} value={resistanceForm.date} onChange={handleDateChange} placeholderText="mm/dd/yyyy"/>
+                    <DatePicker selected={startDate} value={resistanceForm.date} onChange={handleDateChange} placeholderText="mm/dd/yyyy" />
                     <button className='submit-btn' type="submit" disabled={!validateForm(resistanceForm)} >Add</button>
                 </form>
                 <p className='message'>{message}</p>
