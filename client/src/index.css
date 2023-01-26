@@ -98,6 +98,12 @@ code {
   font-weight: 800;
 }
 
+.home-btn:hover,
+.signup-btn:hover,
+.submit-btn:hover {
+  background-color:#9cd326;
+}
+
 /* 3. sign up and login page  */
 .signup,
 .history {
@@ -158,6 +164,10 @@ code {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+.history-data {
+  margin-bottom: 20px;
+}
+
 .history-div {
   margin: 15px auto;
 }
@@ -189,13 +199,13 @@ code {
 
 .cardio-title,
 .cardio-btn {
-  background-color: lightskyblue;
+  background-color: var(--main-color);
   color: black;
 }
 
 .resistance-title,
 .resistance-btn {
-  background-color: var(--main-color);
+  background-color: lightskyblue;
   color: black;
 }
 
@@ -251,7 +261,8 @@ code {
   margin-bottom: 20px;
 }
 
-.cardio {
+.cardio,
+.single-cardio {
   background-image: url("./assets/images/running.jpg");
   background-size: cover;
   background-position: center;
@@ -260,7 +271,8 @@ code {
   color: white;
 }
 
-.resistance {
+.resistance,
+.single-resistance {
   background-image: url("./assets/images/dumbell.jpeg");
   background-size: cover;
   background-position: center;
@@ -270,7 +282,9 @@ code {
 }
 
 .cardio-form,
-.resistance-form {
+.resistance-form,
+.cardio-div,
+.resistance-div {
   /* background-color: rgba(255, 255, 255, 0.2); */
   border-radius: 10px;
   padding: 20px;
@@ -307,4 +321,30 @@ code {
   color: yellow;
   margin-top: 20px;
   text-align: center;
+}
+
+/* single exercise page*/
+.cardio-div,
+.resistance-div {
+  width: 280px;
+}
+
+.single-exercise span {
+  color: var(--main-color);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.delete-btn {
+  border: none;
+  border-radius: 6px;
+  background-color: red;
+  color: whitesmoke;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 10px auto;
+}
+
+.delete-btn:hover {
+  background-color: rgb(211, 5, 5);
 }
