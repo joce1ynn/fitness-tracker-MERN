@@ -16,7 +16,7 @@ code {
     monospace;
 }
 
-/* 1. header */
+/* ---------------------------1. header--------------------------------- */
 .heart-icon {
   height: 24px;
   margin-right: 3px;
@@ -60,7 +60,7 @@ code {
   color: var(--main-color);
 }
 
-/* 2. home page */
+/* --------------------------------- 2. home page---------------------------------  */
 .homepage {
   background-image: url("./assets/images/run.jpg");
   background-size: cover;
@@ -101,10 +101,10 @@ code {
 .home-btn:hover,
 .signup-btn:hover,
 .submit-btn:hover {
-  background-color:#9cd326;
+  background-color: #9cd326;
 }
 
-/* 3. sign up and login page  */
+/* 3. --------------------------------- sign up and login page-------------------------------- */
 .signup,
 .history {
   height: 100vh;
@@ -144,7 +144,7 @@ code {
   color: red;
 }
 
-/* 4. history page  */
+/* --------------------------------- 4. history page---------------------------------   */
 .title {
   margin: 30px auto 20px auto;
   font-weight: 900;
@@ -230,7 +230,7 @@ code {
   font-weight: bold;
 }
 
-/* 5.exercise page  */
+/* --------------------------------- 5.exercise page---------------------------------   */
 .exercise-icon {
   height: 40px;
 }
@@ -254,7 +254,7 @@ code {
   box-shadow: 0 0 10px 0 whitesmoke inset, 0 0 10px 4px whitesmoke;
 }
 
-/* 6. cardio and resistance page */
+/* ------------------------------- 6. cardio and resistance page--------------------------------*/
 .exercise-form-icon {
   height: 50px;
   width: 50px;
@@ -323,7 +323,7 @@ code {
   text-align: center;
 }
 
-/* single exercise page*/
+/* ---------------------------------7.single exercise page--------------------------------- */
 .cardio-div,
 .resistance-div {
   width: 280px;
