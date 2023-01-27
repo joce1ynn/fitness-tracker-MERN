@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+
 import Auth from '../utils/auth';
 import { getCardioById, getResistanceById, deleteCardio, deleteResistance } from '../utils/API';
 import { formatDate } from '../utils/dateFormat';
@@ -7,10 +10,12 @@ import Header from "./Header";
 import cardioIcon from "../assets/images/cardio-w.png"
 import resistanceIcon from "../assets/images/resistance-w.png"
 
+
 export default function SingleExercise() {
     const { id, type } = useParams();
     const [cardioData, setCardioData] = useState({})
     const [resistanceData, setResistanceData] = useState({})
+
 
     const loggedIn = Auth.loggedIn();
     const navigate = useNavigate()
@@ -56,28 +61,40 @@ export default function SingleExercise() {
         const token = loggedIn ? Auth.getToken() : null;
         if (!token) return false;
 
-        const confirmDelete = window.confirm("Are you sure you want to delete this exercise?");
-        if (confirmDelete) {
-            // delete cardio data
-            if (type === "cardio") {
-                try {
-                    const response = await deleteCardio(exerciseId, token);
-                    if (!response.ok) { throw new Error('something went wrong!') }
-                }
-                catch (err) { console.error(err) }
-            }
+        confirmAlert({
+            title: "Delete Exercise",
+            message: "Are you sure you want to delete this exercise?",
+            buttons: [
+                {
+                    label: "Cancel",
+                },
+                {
+                    label: "Delete",
+                    onClick: async () => {
+                        // delete cardio data
+                        if (type === "cardio") {
+                            try {
+                                const response = await deleteCardio(exerciseId, token);
+                                if (!response.ok) { throw new Error('something went wrong!') }
+                            }
+                            catch (err) { console.error(err) }
+                        }
 
-            // delete resistance data
-            else if (type === "resistance") {
-                try {
-                    const response = await deleteResistance(exerciseId, token);
-                    if (!response.ok) { throw new Error('something went wrong!') }
-                }
-                catch (err) { console.error(err) }
-            }
+                        // delete resistance data
+                        else if (type === "resistance") {
+                            try {
+                                const response = await deleteResistance(exerciseId, token);
+                                if (!response.ok) { throw new Error('something went wrong!') }
+                            }
+                            catch (err) { console.error(err) }
+                        }
 
-            navigate("/history")
-        }
+                        // go back to history
+                        navigate("/history")
+                    }
+                }
+            ]
+        });
     }
 
     return (
