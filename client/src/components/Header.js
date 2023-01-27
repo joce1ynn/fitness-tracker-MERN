@@ -6,11 +6,7 @@ import Auth from "../utils/auth"
 import heart from "../assets/images/heart.png"
 
 export default function Header() {
-  // logour function
-  const logout = event => {
-    event.preventDefault()
-    Auth.logout()
-  }
+
   const loggedIn = Auth.loggedIn();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
@@ -33,7 +29,7 @@ export default function Header() {
               {/* use eventKey to show navbar style from react bootstrap */}
               <Nav.Link as={Link} to="/exercise" eventKey="1" >Exercise</Nav.Link>
               <Nav.Link as={Link} to="/history" eventKey="2">History</Nav.Link>
-              <Nav.Link as={Link} to="/" eventKey="3" onClick={logout} >Logout </Nav.Link>
+              <Nav.Link onClick={Auth.logout} >Logout </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </>) :
