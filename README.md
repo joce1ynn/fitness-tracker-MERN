@@ -12,7 +12,7 @@
 
 ## Description:
 
-This is a MERN-stack application that helps you to track your exercises. It allows users to create an account, add new exercises including cardio and resistance, add goals for exercises, and login to check the workout history.
+This is a MERN-stack application that helps you to track your daily exercises. It allows users to create an account, add new exercises including cardio and resistance, and login to check the workout history.
 
 ## Technology:
 
@@ -22,6 +22,7 @@ Project is created with:
 - Express.js
 - React.js
 - Node.js
+- JWT Authentication
 
 ## Installation
 
@@ -39,11 +40,25 @@ After installing npm packages, the application will be invoked by using the foll
 npm run develop
 ```
 
-[Click me to see the app!](https:)
+[Click me to see the app!](https://fittrack-mlvj.onrender.com)
 
 #### Example Screenshot
 
-![Screenshot](./assets/images/ET-1.png)
+- Home Page
+  ![Screenshot](./client/src/assets/screenshots/1.png)
+
+- Login Page
+  ![Screenshot](./client/src/assets/screenshots/2.png)
+
+- Exercise Page
+  ![Screenshot](./client/src/assets/screenshots/3.png)
+  ![Screenshot](./client/src/assets/screenshots/4.png)
+  ![Screenshot](./client/src/assets/screenshots/5.png)
+
+- History Page
+  ![Screenshot](./client/src/assets/screenshots/6.png)
+  ![Screenshot](./client/src/assets/screenshots/7.png)
+  ![Screenshot](./client/src/assets/screenshots/8.png)
 
 ## License
 
@@ -52,7 +67,9 @@ This project is licensed under MIT, for more information please visit [this webs
 
 ## Contribution
 
-Made by Wenwen Tian
+- Icons are from Flaticon.com
+- Backgroun photos are from pexels.com
+- Made with ❤️ by Wenwen Tian
 
 ## Questions?
 
