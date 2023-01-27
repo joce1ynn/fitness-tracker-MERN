@@ -52,12 +52,20 @@ npm run develop
 
 - Exercise Page
   ![Screenshot](./client/src/assets/screenshots/3.png)
+
+- Add Cardio
   ![Screenshot](./client/src/assets/screenshots/4.png)
+
+- Add Resistance
   ![Screenshot](./client/src/assets/screenshots/5.png)
 
 - History Page
   ![Screenshot](./client/src/assets/screenshots/6.png)
+
+- Single Cardio History
   ![Screenshot](./client/src/assets/screenshots/7.png)
+
+- Single Resistance History
   ![Screenshot](./client/src/assets/screenshots/8.png)
 
 ## License
@@ -67,8 +75,8 @@ This project is licensed under MIT, for more information please visit [this webs
 
 ## Contribution
 
-- Icons are from Flaticon.com
-- Backgroun photos are from pexels.com
+- Icons are from www.flaticon.com
+- Backgroun photos are from www.pexels.com
 - Made with ❤️ by Wenwen Tian
 
 ## Questions?
