@@ -1,4 +1,5 @@
-# Fitness Tracker
+# FitTrack
+A MERN-stack fitness tracker app.
 
 ## Table of Contents
 
@@ -12,7 +13,7 @@
 
 ## Description:
 
-This is a MERN-stack application that helps you to track your daily exercises. It allows users to create an account, add new exercises including cardio and resistance, and login to check the workout history.
+A user-friendly MERN-stack application that enables individuals to easily track and manage their daily fitness routines. Features include logging and tracking of both cardio and resistance exercises, viewing of workout history, and ability to delete exercises.
 
 ## Technology:
 
