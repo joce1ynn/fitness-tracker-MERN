@@ -1,4 +1,5 @@
 // get logged in user's info 
+
 export const getMe = (token) => {
   return fetch('/api/user/me', {
     headers: {

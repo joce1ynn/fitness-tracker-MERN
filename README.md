@@ -44,28 +44,28 @@ npm run develop
 
 #### Example Screenshot
 
-- Home Page
+- Home Page <br>
   ![Screenshot](./client/src/assets/screenshots/1.png)
 
-- Login Page
+- Login Page <br>
   ![Screenshot](./client/src/assets/screenshots/2.png)
 
-- Exercise Page
+- Exercise Page <br>
   ![Screenshot](./client/src/assets/screenshots/3.png)
 
-- Add Cardio
+- Add Cardio <br>
   ![Screenshot](./client/src/assets/screenshots/4.png)
 
-- Add Resistance
+- Add Resistance <br>
   ![Screenshot](./client/src/assets/screenshots/5.png)
 
-- History Page
+- History Page <br>
   ![Screenshot](./client/src/assets/screenshots/6.png)
 
-- Single Cardio History
+- Single Cardio History <br>
   ![Screenshot](./client/src/assets/screenshots/7.png)
 
-- Single Resistance History
+- Single Resistance History <br>
   ![Screenshot](./client/src/assets/screenshots/8.png)
 
 ## License
