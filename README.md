@@ -77,7 +77,7 @@ This project is licensed under MIT, for more information please visit [this webs
 ## Contribution
 
 - Icons are from www.flaticon.com
-- Backgroun photos are from www.pexels.com
+- Background photos are from www.pexels.com
 - Made with ❤️ by Wenwen Tian
 
 ## Questions?
